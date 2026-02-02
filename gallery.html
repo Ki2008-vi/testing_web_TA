@@ -2,569 +2,1844 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLOBAL PRODUCTION PONOROGO - Gallery</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GLOBAL PRODUCTION PONOROGO - Galeri</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #1a56db;
+            --primary-dark: #1e40af;
+            --secondary-color: #7e3af2;
+            --accent-color: #f59e0b;
+            --accent-dark: #d97706;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --text-color: #374151;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --info-color: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 70px; /* Adjusted for fixed navbar */
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            line-height: 1.3;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        /* Navigation - MOBILE OPTIMIZED */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 0.8rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1030;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo h1 {
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+        
+        .nav-menu .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 5px 0;
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .nav-menu .nav-link:hover,
+        .nav-menu .nav-link.active {
+            color: var(--primary-color);
+            background-color: rgba(26, 86, 219, 0.08);
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Page Header - MOBILE OPTIMIZED */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.1) 0%, rgba(126, 58, 242, 0.1) 100%);
+            padding: 40px 0 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.1"/></svg>');
+            background-size: cover;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        
+        .page-header p {
+            font-size: 1rem;
+            color: var(--text-color);
+            max-width: 100%;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .btn-custom {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(26, 86, 219, 0.3);
+        }
+        
+        .btn-secondary-custom {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary-custom:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .btn-whatsapp-custom {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp-custom:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Gallery Filter - MOBILE OPTIMIZED */
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 30px;
+            padding: 15px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .gallery-filter::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.2);
+        }
+        
+        /* Gallery Grid - MOBILE OPTIMIZED */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 200px;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 15px;
+            transform: translateY(0);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-overlay h4 {
+            color: white;
+            margin-bottom: 5px;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+        
+        .gallery-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .event-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        /* Category Badges - MOBILE OPTIMIZED */
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(26, 86, 219, 0.9);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        /* Video Section - MOBILE OPTIMIZED */
+        .video-section {
+            background-color: var(--light-color);
+            padding: 40px 0;
+            margin: 30px 0;
+        }
+        
+        .video-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+        
+        .video-section h2 i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .video-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-card:hover .video-play-btn {
+            background: var(--primary-color);
+            color: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-card h4 {
+            padding: 15px;
+            color: var(--dark-color);
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        /* CTA Section - MOBILE OPTIMIZED */
+        .gallery-cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-cta h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .gallery-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            max-width: 100%;
+            position: relative;
+            z-index: 1;
+            line-height: 1.5;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer - MOBILE OPTIMIZED */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding-top: 50px;
+        }
+        
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 8px;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        /* WhatsApp Float Button - MOBILE OPTIMIZED */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.4s;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Lightbox Customization for Mobile */
+        .lightbox .lb-image {
+            border-radius: 10px;
+            max-width: 90vw;
+            max-height: 70vh;
+        }
+        
+        .lightbox .lb-nav a.lb-prev,
+        .lightbox .lb-nav a.lb-next {
+            opacity: 1;
+        }
+        
+        /* Loading Animation */
+        .gallery-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            display: none;
+        }
+        
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(26, 86, 219, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Gallery Item Animation */
+        .gallery-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Pagination - MOBILE OPTIMIZED */
+        .gallery-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .page-number {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .page-number:hover,
+        .page-number.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Empty State */
+        .gallery-empty {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--light-color);
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .gallery-empty i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+        
+        .gallery-empty h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .gallery-empty p {
+            color: var(--text-color);
+            max-width: 100%;
+            margin: 0 auto 20px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        /* Responsive Adjustments */
+        @media (min-width: 576px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn-custom {
+                width: auto;
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .gallery-item {
+                height: 180px;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .page-header {
+                padding: 60px 0 40px;
+                margin-bottom: 40px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .gallery-cta {
+                padding: 50px 40px;
+                margin: 50px 0 40px;
+            }
+            
+            .gallery-cta h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: row;
+            }
+            
+            .cta-buttons .btn-custom {
+                width: auto;
+            }
+            
+            .video-section h2 {
+                font-size: 2.2rem;
+            }
+            
+            .video-thumbnail {
+                height: 200px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .page-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu .nav-link {
+                width: auto;
+                margin: 0 5px;
+                text-align: center;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 30px;
+            }
+            
+            .gallery-item {
+                height: 220px;
+            }
+            
+            .whatsapp-btn {
+                width: auto;
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+        
+        /* Utility classes for mobile */
+        .mobile-only {
+            display: block;
+        }
+        
+        .desktop-only {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .desktop-only {
+                display: block;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        button, 
+        .btn-custom,
+        a,
+        .nav-link,
+        .social-icons a,
+        .filter-btn,
+        .page-number {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        /* Prevent long words from breaking layout */
+        .gallery-overlay h4,
+        .video-card h4,
+        .gallery-empty h3 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Improved spacing for mobile */
+        .mb-mobile-3 {
+            margin-bottom: 1rem;
+        }
+        
+        .mb-mobile-4 {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Mobile menu improvements */
+        .navbar-collapse {
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Better text readability on mobile */
+        p, li, span, .gallery-overlay p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Modal adjustments for mobile */
+        .modal-dialog {
+            margin: 10px;
+        }
+        
+        /* Scrollable modal content */
+        .modal-body {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+        }
+        
+        /* Lightbox overlay adjustments for mobile */
+        .lb-overlay {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        /* Loading state */
+        #galleryLoading {
+            grid-column: 1 / -1;
+        }
+        
+        /* Gallery content spacing */
+        .gallery-content {
+            padding-bottom: 30px;
+        }
+        
+        /* Button sizes in modal footer */
+        .modal-footer .btn-custom {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        /* Video modal for mobile */
+        .video-modal .modal-content {
+            border-radius: 12px;
+        }
+        
+        /* Grid layout adjustments */
+        .row.g-4 {
+            row-gap: 20px !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
+        <div class="container">
             <div class="logo">
-                <span class="logo-icon">🔘</span>
-                <h1>GLOBAL PRODUCTION PONOROGO</h1>
+                <span class="logo-icon"><i class="fas fa-broadcast-tower"></i></span>
+                <h1 class="h4 mb-0">GLOBAL PRODUCTION<br><small class="fs-6">PONOROGO</small></h1>
             </div>
             
-            <div class="nav-menu">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="gallery.html" class="active">Gallery</a>
-                <a href="testimonials.html">Testimonials</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                   target="_blank" class="whatsapp-btn">
-                   <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
-            
-            <button class="mobile-menu-btn">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
-        </div>
-    </nav>
-
-    <!-- Gallery Page Content -->
-    <section class="gallery-page">
-        <div class="container">
-            <div class="page-header">
-                <h1><i class="fas fa-images"></i> Galeri Acara Kami</h1>
-                <p>Lihat portofolio acara-acara sukses yang telah kami tangani</p>
-                
-                <div class="page-action">
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20baru%20melihat%20galeri%20dan%20ingin%20konsultasi%20untuk%20acara%20saya%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                       target="_blank" class="btn-whatsapp">
-                       <i class="fab fa-whatsapp"></i> Konsultasi Acara
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto align-items-center">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="services.html">Layanan</a>
+                    <a class="nav-link active" href="gallery.html">Galeri</a>
+                    <a class="nav-link" href="testimonials.html">Testimoni</a>
+                    <a class="nav-link" href="contact.html">Kontak</a>
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                       target="_blank" class="whatsapp-btn mobile-only">
+                       <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
-                </div>
-            </div>
-            
-            <!-- Gallery Filter -->
-            <div class="gallery-filter">
-                <button class="filter-btn active" data-filter="all">Semua Acara</button>
-                <button class="filter-btn" data-filter="wedding">Pernikahan</button>
-                <button class="filter-btn" data-filter="corporate">Korporat</button>
-                <button class="filter-btn" data-filter="concert">Konser</button>
-                <button class="filter-btn" data-filter="festival">Festival</button>
-                <button class="filter-btn" data-filter="installation">Instalasi</button>
-            </div>
-            
-            <!-- Gallery Grid -->
-            <div class="gallery-grid">
-                <!-- Wedding Events -->
-                <div class="gallery-item" data-category="wedding">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wedding Sound System">
-                    <div class="gallery-overlay">
-                        <h4>Sound System Pernikahan</h4>
-                        <p>Sound system lengkap untuk acara pernikahan di Ponorogo</p>
-                        <span class="event-date">Januari 2024</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="wedding">
-                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wedding Stage">
-                    <div class="gallery-overlay">
-                        <h4>Panggung Pernikahan Mewah</h4>
-                        <p>Setup panggung dan lighting untuk resepsi pernikahan</p>
-                        <span class="event-date">Desember 2023</span>
-                    </div>
-                </div>
-                
-                <!-- Corporate Events -->
-                <div class="gallery-item" data-category="corporate">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Corporate Conference">
-                    <div class="gallery-overlay">
-                        <h4>Konferensi Korporat</h4>
-                        <p>Sistem audio dan multimedia untuk seminar perusahaan</p>
-                        <span class="event-date">November 2023</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="corporate">
-                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Product Launch">
-                    <div class="gallery-overlay">
-                        <h4>Product Launch Event</h4>
-                        <p>Full production untuk peluncuran produk baru</p>
-                        <span class="event-date">Oktober 2023</span>
-                    </div>
-                </div>
-                
-                <!-- Concert Events -->
-                <div class="gallery-item" data-category="concert">
-                    <img src="https://images.unsplash.com/photo-1501281667305-0d4e0ab5c5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Live Concert">
-                    <div class="gallery-overlay">
-                        <h4>Konser Musik Live</h4>
-                        <p>Sound system dan lighting untuk konser outdoor</p>
-                        <span class="event-date">September 2023</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="concert">
-                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="DJ Performance">
-                    <div class="gallery-overlay">
-                        <h4>DJ Performance</h4>
-                        <p>Setup DJ dengan sound system profesional</p>
-                        <span class="event-date">Agustus 2023</span>
-                    </div>
-                </div>
-                
-                <!-- Festival Events -->
-                <div class="gallery-item" data-category="festival">
-                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Music Festival">
-                    <div class="gallery-overlay">
-                        <h4>Festival Musik</h4>
-                        <p>Stage besar dengan sistem audio dan lighting lengkap</p>
-                        <span class="event-date">Juli 2023</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="festival">
-                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cultural Festival">
-                    <div class="gallery-overlay">
-                        <h4>Festival Budaya</h4>
-                        <p>Production untuk acara budaya dan kesenian</p>
-                        <span class="event-date">Juni 2023</span>
-                    </div>
-                </div>
-                
-                <!-- Installation Projects -->
-                <div class="gallery-item" data-category="installation">
-                    <img src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Church Installation">
-                    <div class="gallery-overlay">
-                        <h4>Instalasi Gereja</h4>
-                        <p>Instalasi sound system permanen untuk gereja</p>
-                        <span class="event-date">Mei 2023</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="installation">
-                    <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="School Installation">
-                    <div class="gallery-overlay">
-                        <h4>Instalasi Sekolah</h4>
-                        <p>Sistem audio untuk aula sekolah dan laboratorium</p>
-                        <span class="event-date">April 2023</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="corporate">
-                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Business Meeting">
-                    <div class="gallery-overlay">
-                        <h4>Rapat Bisnis</h4>
-                        <p>Sistem konferensi untuk meeting perusahaan</p>
-                        <span class="event-date">Maret 2023</span>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" data-category="wedding">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Outdoor Wedding">
-                    <div class="gallery-overlay">
-                        <h4>Pernikahan Outdoor</h4>
-                        <p>Setup lengkap untuk pernikahan di taman</p>
-                        <span class="event-date">Februari 2023</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Video Gallery -->
-            <div class="video-section">
-                <h2><i class="fas fa-video"></i> Video Showcase</h2>
-                <p>Lihat highlight acara-acara kami dalam video</p>
-                
-                <div class="video-grid">
-                    <div class="video-item">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1492684223066-dd23140edf6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Event Highlight">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <h4>Highlight Konser 2023</h4>
-                    </div>
-                    
-                    <div class="video-item">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="DJ Set">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <h4>DJ Performance Setup</h4>
-                    </div>
-                    
-                    <div class="video-item">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Festival">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <h4>Festival Budaya Ponorogo</h4>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- CTA Section -->
-            <div class="gallery-cta">
-                <h2>Acara Anda Selanjutnya?</h2>
-                <p>Hubungi kami untuk konsultasi gratis dan dapatkan solusi terbaik untuk event Anda</p>
-                <div class="cta-buttons">
-                    <a href="tel:+6282134567890" class="btn-secondary">Telepon Kami</a>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20baru%20melihat%20galeri%20dan%20ingin%20konsultasi%20acara" 
-                       target="_blank" class="btn-whatsapp">
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                       target="_blank" class="whatsapp-btn desktop-only">
                        <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
             </div>
         </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h1><i class="fas fa-images"></i> Galeri Acara Kami</h1>
+                    <p>Lihat portofolio acara-acara sukses yang telah kami tangani. Dari pernikahan, konser, hingga acara korporat - setiap event adalah karya seni.</p>
+                    
+                    <div class="page-action mt-3 d-flex flex-column flex-sm-row justify-content-center gap-2">
+                        <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20baru%20melihat%20galeri%20dan%20ingin%20konsultasi%20untuk%20acara%20saya%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                           target="_blank" class="btn-custom btn-whatsapp-custom">
+                           <i class="fab fa-whatsapp"></i> Konsultasi Acara
+                        </a>
+                        <a href="services.html" class="btn-custom btn-secondary-custom">
+                            <i class="fas fa-volume-up"></i> Lihat Layanan
+                        </a>
+                        <a href="tel:+6282134567890" class="btn-custom btn-primary-custom">
+                            <i class="fas fa-phone"></i> Telepon Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer (sama seperti di index.html) -->
-    <!-- Copy footer dari index.html -->
+    <!-- Gallery Content -->
+    <section class="gallery-content">
+        <div class="container">
+            <!-- Gallery Filter -->
+            <div class="gallery-filter" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="wedding">
+                    <i class="fas fa-heart me-1"></i> Pernikahan
+                </button>
+                <button class="filter-btn" data-filter="corporate">
+                    <i class="fas fa-briefcase me-1"></i> Korporat
+                </button>
+                <button class="filter-btn" data-filter="concert">
+                    <i class="fas fa-music me-1"></i> Konser
+                </button>
+                <button class="filter-btn" data-filter="festival">
+                    <i class="fas fa-star me-1"></i> Festival
+                </button>
+                <button class="filter-btn" data-filter="installation">
+                    <i class="fas fa-tools me-1"></i> Instalasi
+                </button>
+            </div>
+            
+            <!-- Loading State -->
+            <div class="gallery-loading" id="galleryLoading">
+                <div class="loader"></div>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Wedding Events -->
+                <div class="gallery-item" data-category="wedding" data-aos="fade-up">
+                    <span class="category-badge">Pernikahan</span>
+                    <a href="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Sound System Pernikahan - Januari 2024">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Sound System Pernikahan" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Sound System Pernikahan</h4>
+                        <p>Sound system lengkap untuk acara pernikahan di Ponorogo</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Jan 2024
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="wedding" data-aos="fade-up" data-aos-delay="100">
+                    <span class="category-badge">Pernikahan</span>
+                    <a href="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Panggung Pernikahan Mewah - Desember 2023">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Wedding Stage" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Panggung Pernikahan</h4>
+                        <p>Setup panggung dan lighting untuk resepsi pernikahan</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Des 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Corporate Events -->
+                <div class="gallery-item" data-category="corporate" data-aos="fade-up" data-aos-delay="200">
+                    <span class="category-badge">Korporat</span>
+                    <a href="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Konferensi Korporat - November 2023">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Corporate Conference" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Konferensi Korporat</h4>
+                        <p>Sistem audio dan multimedia untuk seminar perusahaan</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Nov 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="corporate" data-aos="fade-up" data-aos-delay="300">
+                    <span class="category-badge">Korporat</span>
+                    <a href="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Product Launch Event - Oktober 2023">
+                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Product Launch" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Product Launch Event</h4>
+                        <p>Full production untuk peluncuran produk baru</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Okt 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Concert Events -->
+                <div class="gallery-item" data-category="concert" data-aos="fade-up" data-aos-delay="400">
+                    <span class="category-badge">Konser</span>
+                    <a href="https://images.unsplash.com/photo-1501281667305-0d4e0ab5c5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Konser Musik Live - September 2023">
+                        <img src="https://images.unsplash.com/photo-1501281667305-0d4e0ab5c5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Live Concert" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Konser Musik Live</h4>
+                        <p>Sound system dan lighting untuk konser outdoor</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Sep 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="concert" data-aos="fade-up" data-aos-delay="500">
+                    <span class="category-badge">Konser</span>
+                    <a href="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="DJ Performance - Agustus 2023">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="DJ Performance" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>DJ Performance</h4>
+                        <p>Setup DJ dengan sound system profesional</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Agu 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Festival Events -->
+                <div class="gallery-item" data-category="festival" data-aos="fade-up" data-aos-delay="600">
+                    <span class="category-badge">Festival</span>
+                    <a href="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Festival Musik - Juli 2023">
+                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Music Festival" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Festival Musik</h4>
+                        <p>Stage besar dengan sistem audio dan lighting lengkap</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Jul 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="festival" data-aos="fade-up" data-aos-delay="700">
+                    <span class="category-badge">Festival</span>
+                    <a href="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Festival Budaya - Juni 2023">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Cultural Festival" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Festival Budaya</h4>
+                        <p>Production untuk acara budaya dan kesenian</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Jun 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Additional Items -->
+                <div class="gallery-item" data-category="wedding" data-aos="fade-up" data-aos-delay="800">
+                    <span class="category-badge">Pernikahan</span>
+                    <a href="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Pernikahan Outdoor - Februari 2023">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Outdoor Wedding" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Pernikahan Outdoor</h4>
+                        <p>Setup lengkap untuk pernikahan di taman</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Feb 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="corporate" data-aos="fade-up" data-aos-delay="900">
+                    <span class="category-badge">Korporat</span>
+                    <a href="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Rapat Bisnis - Maret 2023">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Business Meeting" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Rapat Bisnis</h4>
+                        <p>Sistem konferensi untuk meeting perusahaan</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Mar 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Installation Projects -->
+                <div class="gallery-item" data-category="installation" data-aos="fade-up" data-aos-delay="1000">
+                    <span class="category-badge">Instalasi</span>
+                    <a href="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Instalasi Gereja - Mei 2023">
+                        <img src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Church Installation" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Instalasi Gereja</h4>
+                        <p>Instalasi sound system permanen untuk gereja</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Mei 2023
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="installation" data-aos="fade-up" data-aos-delay="1100">
+                    <span class="category-badge">Instalasi</span>
+                    <a href="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                       data-lightbox="gallery" data-title="Instalasi Sekolah - April 2023">
+                        <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="School Installation" loading="lazy">
+                    </a>
+                    <div class="gallery-overlay">
+                        <h4>Instalasi Sekolah</h4>
+                        <p>Sistem audio untuk aula sekolah dan laboratorium</p>
+                        <span class="event-date">
+                            <i class="fas fa-calendar"></i> Apr 2023
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Empty State (Hidden by default) -->
+            <div class="gallery-empty" id="emptyState" style="display: none;">
+                <i class="fas fa-images"></i>
+                <h3>Belum ada foto untuk kategori ini</h3>
+                <p>Foto-foto untuk kategori yang dipilih sedang dalam proses pengumpulan. Silakan pilih kategori lain atau hubungi kami untuk melihat portofolio lengkap.</p>
+                <button class="btn-custom btn-primary-custom mt-3" id="resetFilter">
+                    <i class="fas fa-redo"></i> Tampilkan Semua
+                </button>
+            </div>
+            
+            <!-- Pagination (Optional) -->
+            <div class="gallery-pagination" data-aos="fade-up">
+                <div class="page-number active">1</div>
+                <div class="page-number">2</div>
+                <div class="page-number">3</div>
+                <div class="page-number">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Showcase -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-header text-center mb-4" data-aos="fade-up">
+                <h2><i class="fas fa-video"></i> Video Showcase</h2>
+                <p class="section-desc">Lihat highlight acara-acara kami dalam video dokumentasi</p>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <img src="https://images.unsplash.com/photo-1492684223066-dd23140edf6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Event Highlight" loading="lazy">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h4>Highlight Konser 2023</h4>
+                </div>
+                
+                <div class="video-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="DJ Set" loading="lazy">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h4>DJ Performance Setup</h4>
+                </div>
+                
+                <div class="video-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="video-thumbnail" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                             alt="Festival" loading="lazy">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h4>Festival Budaya Ponorogo</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gallery-cta">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h2 data-aos="fade-up">Siap Mengadakan Acara Anda?</h2>
+                    <p data-aos="fade-up" data-aos-delay="100">
+                        Setiap acara adalah cerita unik. Biarkan kami membantu Anda menciptakan pengalaman tak terlupakan 
+                        dengan peralatan profesional dan tim ahli kami.
+                    </p>
+                    
+                    <div class="cta-buttons d-flex flex-column flex-sm-row" data-aos="fade-up" data-aos-delay="200">
+                        <a href="contact.html" class="btn-custom btn-secondary-custom mb-2 mb-sm-0 me-sm-2">
+                            <i class="fas fa-envelope"></i> Request Quote
+                        </a>
+                        <a href="tel:+6282134567890" class="btn-custom btn-secondary-custom mb-2 mb-sm-0 me-sm-2">
+                            <i class="fas fa-phone"></i> Telepon Kami
+                        </a>
+                        <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20baru%20melihat%20galeri%20dan%20ingin%20konsultasi%20acara" 
+                           target="_blank" class="btn-custom btn-whatsapp-custom">
+                           <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4" data-aos="fade-up" data-aos-delay="300">
+                        <a href="services.html" class="text-white text-decoration-underline d-block">
+                            <i class="fas fa-arrow-right me-2"></i> Lihat layanan lengkap kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <!-- Google Maps Section -->
+            <div class="maps-section mb-4">
+                <div class="maps-header text-center mb-3">
+                    <h3><i class="fas fa-map-marker-alt"></i> Lokasi Kami</h3>
+                    <p>Kunjungi kantor kami di Jl. Soekarno Hatta Ponorogo</p>
+                </div>
+                
+                <div class="row g-3">
+                    <div class="col-lg-8" data-aos="fade-right">
+                        <div class="google-maps">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.57461384212!2d111.4887810750884!3d-7.9394162920846325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e790b0047696b81%3A0xda7f0af71aa4e4f6!2sGLOBAL%20PRODUCTION!5e0!3m2!1sid!2sid!4v1769149121996!5m2!1sid!2sid" 
+                                width="100%" 
+                                height="250" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                            <div class="maps-overlay d-flex p-2 flex-wrap">
+                                <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="btn btn-outline-light me-2 mb-1">
+                                    <i class="fas fa-external-link-alt"></i> Buka di Maps
+                                </a>
+                                <a href="https://maps.app.goo.gl/?link=https://www.google.com/maps/place/GLOBAL%20PRODUCTION/@-7.9394163,111.4887811,17z?entry=ttu" 
+                                   target="_blank" class="btn btn-light mb-1">
+                                    <i class="fas fa-directions"></i> Dapatkan Rute
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4" data-aos="fade-left">
+                        <div class="maps-info h-100">
+                            <h4><i class="fas fa-info-circle"></i> Informasi Lokasi</h4>
+                            <div class="info-detail d-flex mb-2">
+                                <i class="fas fa-map-pin mt-1 me-2 text-primary"></i>
+                                <div>
+                                    <strong>Alamat:</strong>
+                                    <p>JL Soekarno Hatta No. 123, Ponorogo, Jawa Timur 63411</p>
+                                </div>
+                            </div>
+                            <div class="info-detail d-flex mb-2">
+                                <i class="fas fa-clock mt-1 me-2 text-primary"></i>
+                                <div>
+                                    <strong>Jam Operasional:</strong>
+                                    <p>Senin - Sabtu: 08:00 - 17:00 WIB</p>
+                                    <p>Minggu: 09:00 - 15:00 WIB</p>
+                                </div>
+                            </div>
+                            <div class="info-detail d-flex mb-2">
+                                <i class="fas fa-phone mt-1 me-2 text-primary"></i>
+                                <div>
+                                    <strong>Kontak:</strong>
+                                    <p>+62 821 3456 7890</p>
+                                </div>
+                            </div>
+                            <div class="maps-actions mt-3 d-flex flex-wrap">
+                                <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="btn btn-outline-light mb-1 me-1">
+                                    <i class="fas fa-map-marked-alt"></i> Maps
+                                </a>
+                                <a href="tel:+6282134567890" class="btn btn-light mb-1 me-1">
+                                    <i class="fas fa-phone"></i> Telepon
+                                </a>
+                                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                                   target="_blank" class="btn btn-success mb-1">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Footer Content -->
+            <div class="row g-3 mb-4">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="footer-logo">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="logo-icon"><i class="fas fa-broadcast-tower"></i></span>
+                            <h2 class="h4 mb-0 ms-2">GLOBAL PRODUCTION<br><small>PONOROGO</small></h2>
+                        </div>
+                        <p>Solusi Event Production Profesional</p>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="social-media mt-3">
+                            <h4>Ikuti Kami</h4>
+                            <div class="social-icons d-flex mb-3">
+                                <a href="https://instagram.com/globalproductionponorogo" target="_blank" class="social-icon instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://facebook.com/globalproductionponorogo" target="_blank" class="social-icon facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://tiktok.com/@globalproductionponorogo" target="_blank" class="social-icon tiktok">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="https://youtube.com/@globalproductionponorogo" target="_blank" class="social-icon youtube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                                   target="_blank" class="social-icon whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-links">
+                        <h3>Tautan Cepat</h3>
+                        <a href="index.html" class="d-block mb-2"><i class="fas fa-home me-2"></i> Home</a>
+                        <a href="services.html" class="d-block mb-2"><i class="fas fa-volume-up me-2"></i> Layanan</a>
+                        <a href="gallery.html" class="d-block mb-2"><i class="fas fa-images me-2"></i> Galeri</a>
+                        <a href="testimonials.html" class="d-block mb-2"><i class="fas fa-star me-2"></i> Testimoni</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer-contact">
+                        <h3>Hubungi Kami</h3>
+                        <div class="contact-item d-flex mb-3">
+                            <i class="fas fa-map-marker-alt mt-1 me-3"></i>
+                            <div>
+                                <h4>Alamat</h4>
+                                <p>JL Soekarno Hatta No. 123, Ponorogo, Jawa Timur 63411</p>
+                                <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="maps-link-small d-block mt-1">
+                                    <i class="fas fa-external-link-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item d-flex mb-3">
+                            <i class="fas fa-phone mt-1 me-3"></i>
+                            <div>
+                                <h4>Telepon & WhatsApp</h4>
+                                <p>+62 821 3456 7890</p>
+                                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                                   target="_blank" class="d-inline-block mt-2 btn-custom btn-whatsapp-custom">
+                                   <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom pt-3 border-top border-secondary" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-6 mb-2 mb-md-0">
+                        <p>&copy; <span id="currentYear"></span> GLOBAL PRODUCTION PONOROGO. Semua hak dilindungi.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-extra d-flex flex-wrap justify-content-md-end">
+                            <a href="#" class="me-3 mb-2">Kebijakan Privasi</a>
+                            <a href="#" class="me-3 mb-2">Syarat & Ketentuan</a>
+                            <a href="maps.html" class="mb-2">
+                                <i class="fas fa-map-marker-alt"></i> Lokasi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     
-    <script src="js/script.js"></script>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+       target="_blank" class="whatsapp-float">
+       <i class="fab fa-whatsapp"></i>
+    </a>
     
-    <style>
-    .gallery-page {
-        padding: 120px 0 60px;
-        background: var(--light);
-    }
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
     
-    .page-header {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
+    <!-- Video Modal -->
+    <div class="modal fade video-modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Video Showcase</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="videoFrame" src="" title="Video showcase" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    .page-header h1 {
-        color: var(--primary);
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-    }
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    .page-header h1 i {
-        color: var(--secondary);
-    }
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    .page-header p {
-        color: var(--gray);
-        font-size: 1.2rem;
-        max-width: 800px;
-        margin: 0 auto 2rem;
-    }
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     
-    .page-action {
-        margin-top: 2rem;
-    }
-    
-    .gallery-filter {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 3rem;
-        flex-wrap: wrap;
-    }
-    
-    .filter-btn {
-        background: var(--white);
-        color: var(--primary);
-        border: 2px solid var(--primary);
-        padding: 0.75rem 1.5rem;
-        border-radius: 25px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .filter-btn:hover,
-    .filter-btn.active {
-        background: var(--primary);
-        color: var(--white);
-    }
-    
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 4rem;
-    }
-    
-    .gallery-item {
-        position: relative;
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-lg);
-        transition: transform 0.3s;
-        height: 300px;
-    }
-    
-    .gallery-item:hover {
-        transform: translateY(-10px);
-    }
-    
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    
-    .gallery-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0,0,0,0.9));
-        color: var(--white);
-        padding: 1.5rem;
-        transform: translateY(100%);
-        transition: transform 0.3s;
-    }
-    
-    .gallery-item:hover .gallery-overlay {
-        transform: translateY(0);
-    }
-    
-    .gallery-overlay h4 {
-        color: var(--white);
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
-    }
-    
-    .gallery-overlay p {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .event-date {
-        display: block;
-        color: var(--secondary);
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-    
-    .video-section {
-        margin: 4rem 0;
-        padding: 3rem 0;
-        border-top: 2px solid var(--light);
-        border-bottom: 2px solid var(--light);
-    }
-    
-    .video-section h2 {
-        color: var(--primary);
-        text-align: center;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-    }
-    
-    .video-section h2 i {
-        color: var(--secondary);
-    }
-    
-    .video-section p {
-        text-align: center;
-        color: var(--gray);
-        margin-bottom: 2rem;
-    }
-    
-    .video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-    
-    .video-item {
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: transform 0.3s;
-    }
-    
-    .video-item:hover {
-        transform: translateY(-5px);
-    }
-    
-    .video-thumbnail {
-        position: relative;
-        height: 200px;
-        overflow: hidden;
-    }
-    
-    .video-thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s;
-    }
-    
-    .video-item:hover .video-thumbnail img {
-        transform: scale(1.1);
-    }
-    
-    .play-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 60px;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: var(--primary);
-        transition: all 0.3s;
-    }
-    
-    .video-item:hover .play-button {
-        background: var(--secondary);
-        color: var(--white);
-    }
-    
-    .video-item h4 {
-        padding: 1.5rem;
-        color: var(--primary);
-        text-align: center;
-        margin: 0;
-    }
-    
-    .gallery-cta {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: var(--white);
-        padding: 3rem;
-        border-radius: var(--radius-lg);
-        text-align: center;
-        margin-top: 3rem;
-    }
-    
-    .gallery-cta h2 {
-        color: var(--white);
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-    
-    .gallery-cta p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .cta-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    @media (max-width: 768px) {
-        .gallery-grid {
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        }
-        
-        .gallery-item {
-            height: 250px;
-        }
-        
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .gallery-cta {
-            padding: 2rem;
-        }
-        
-        .gallery-cta h2 {
-            font-size: 1.5rem;
-        }
-        
-        .cta-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .cta-buttons a {
-            width: 100%;
-            max-width: 300px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .gallery-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .video-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-    </style>
-    
+    <!-- Custom JS -->
     <script>
-    // Gallery Filter Functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+            disable: window.innerWidth < 768 ? true : false
+        });
         
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                const filter = this.getAttribute('data-filter');
-                
-                // Show/hide gallery items based on filter
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 100);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
+        // Re-enable AOS on mobile after page load
+        window.addEventListener('load', function() {
+            if (window.innerWidth < 768) {
+                AOS.refresh();
+            }
+        });
+        
+        // Lightbox configuration for mobile
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'albumLabel': 'Foto %1 dari %2',
+            'positionFromTop': 50,
+            'fadeDuration': 300,
+            'maxWidth': window.innerWidth < 768 ? '90%' : '80%',
+            'maxHeight': window.innerWidth < 768 ? '70%' : '80%'
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Gallery Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const galleryGrid = document.getElementById('galleryGrid');
+            const emptyState = document.getElementById('emptyState');
+            const galleryLoading = document.getElementById('galleryLoading');
+            const resetFilterBtn = document.getElementById('resetFilter');
+            
+            // Video modal
+            const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+            const videoFrame = document.getElementById('videoFrame');
+            
+            // Handle video thumbnail clicks
+            document.querySelectorAll('.video-thumbnail').forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    const videoUrl = this.getAttribute('data-video');
+                    videoFrame.src = videoUrl;
+                    videoModal.show();
+                });
+            });
+            
+            // Close modal when hidden
+            document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+                videoFrame.src = '';
+            });
+            
+            // Filter functionality
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show loading
+                    galleryLoading.style.display = 'flex';
+                    
+                    // Simulate loading delay
+                    setTimeout(() => {
+                        let visibleItems = 0;
+                        
+                        // Show/hide gallery items based on filter
+                        galleryItems.forEach(item => {
+                            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                                item.style.display = 'block';
+                                visibleItems++;
+                                
+                                // Add animation
+                                setTimeout(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translateY(0) scale(1)';
+                                }, 100);
+                            } else {
+                                item.style.opacity = '0';
+                                item.style.transform = 'translateY(20px) scale(0.9)';
+                                setTimeout(() => {
+                                    item.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                        
+                        // Show empty state if no items visible
+                        if (visibleItems === 0) {
+                            galleryGrid.style.display = 'none';
+                            emptyState.style.display = 'block';
+                        } else {
+                            galleryGrid.style.display = 'grid';
+                            emptyState.style.display = 'none';
+                        }
+                        
+                        // Hide loading
+                        galleryLoading.style.display = 'none';
+                    }, 500);
+                });
+            });
+            
+            // Reset filter functionality
+            resetFilterBtn.addEventListener('click', function() {
+                filterBtns.forEach(btn => {
+                    if (btn.getAttribute('data-filter') === 'all') {
+                        btn.click();
                     }
                 });
             });
-        });
-        
-        // Video play buttons
-        const playButtons = document.querySelectorAll('.play-button');
-        playButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                alert('Video akan diputar di YouTube. Hubungi kami untuk melihat video lengkap acara kami.');
+            
+            // Lazy loading images
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.getAttribute('data-src');
+                        if (src) {
+                            img.src = src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '0px 0px 100px 0px'
+            });
+            
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                if (img.complete) {
+                    // Image already loaded
+                } else {
+                    imageObserver.observe(img);
+                }
+            });
+            
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Pagination functionality
+            document.querySelectorAll('.page-number').forEach((page, index) => {
+                page.addEventListener('click', function() {
+                    // Remove active class from all pages
+                    document.querySelectorAll('.page-number').forEach(p => p.classList.remove('active'));
+                    // Add active class to clicked page
+                    this.classList.add('active');
+                    
+                    // Simulate page change
+                    galleryLoading.style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        // In a real implementation, this would load new data
+                        console.log(`Loading page ${index + 1}...`);
+                        galleryLoading.style.display = 'none';
+                    }, 1000);
+                });
+            });
+            
+            // Gallery item touch feedback
+            galleryItems.forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                item.addEventListener('touchend', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                const navbarToggler = document.querySelector('.navbar-toggler');
+                
+                if (navbarCollapse.classList.contains('show') && 
+                    !navbarCollapse.contains(e.target) && 
+                    !navbarToggler.contains(e.target)) {
+                    navbarToggler.click();
+                }
             });
         });
-    });
+        
+        // Keyboard navigation for gallery
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                // Close lightbox if open
+                const lightbox = document.querySelector('.lb-dataContainer');
+                if (lightbox) {
+                    // Lightbox library handles its own close
+                }
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                if (href === '#') return;
+                
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            const navbarToggler = document.querySelector('.navbar-toggler');
+                            navbarToggler.click();
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Category filter with URL hash
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const filterBtn = document.querySelector(`.filter-btn[data-filter="${hash}"]`);
+                if (filterBtn) {
+                    filterBtn.click();
+                }
+            }
+        });
+        
+        // Initialize based on URL hash
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const filterBtn = document.querySelector(`.filter-btn[data-filter="${hash}"]`);
+                if (filterBtn) {
+                    filterBtn.click();
+                }
+            }
+            
+            // Preload first few images for better mobile experience
+            const firstImages = document.querySelectorAll('.gallery-item:nth-child(-n+6) img');
+            firstImages.forEach(img => {
+                const src = img.getAttribute('src');
+                if (src) {
+                    const preloadImg = new Image();
+                    preloadImg.src = src;
+                }
+            });
+        });
+        
+        // Touch-friendly improvements
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+        
+        // Handle orientation change
+        window.addEventListener('orientationchange', function() {
+            // Refresh gallery layout
+            setTimeout(function() {
+                if (window.innerWidth < 768) {
+                    AOS.refresh();
+                }
+            }, 300);
+        });
     </script>
 </body>
 </html>
