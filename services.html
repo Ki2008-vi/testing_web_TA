@@ -2,305 +2,1672 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLOBAL PRODUCTION PONOROGO - Services</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GLOBAL PRODUCTION PONOROGO - Layanan</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1a56db;
+            --primary-dark: #1e40af;
+            --secondary-color: #7e3af2;
+            --accent-color: #f59e0b;
+            --accent-dark: #d97706;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --text-color: #374151;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --info-color: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 70px; /* Adjusted for fixed navbar */
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            line-height: 1.3;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        /* Navigation - MOBILE OPTIMIZED */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 0.8rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1030;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo h1 {
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+        
+        .nav-menu .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 5px 0;
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .nav-menu .nav-link:hover,
+        .nav-menu .nav-link.active {
+            color: var(--primary-color);
+            background-color: rgba(26, 86, 219, 0.08);
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Page Header - MOBILE OPTIMIZED */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.1) 0%, rgba(126, 58, 242, 0.1) 100%);
+            padding: 40px 0 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.1"/></svg>');
+            background-size: cover;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        
+        .page-header p {
+            font-size: 1rem;
+            color: var(--text-color);
+            max-width: 100%;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .btn-custom {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(26, 86, 219, 0.3);
+        }
+        
+        .btn-secondary-custom {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary-custom:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .btn-whatsapp-custom {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp-custom:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Services Tabs - MOBILE OPTIMIZED */
+        .services-tabs {
+            margin-bottom: 30px;
+        }
+        
+        .nav-tabs-custom {
+            border-bottom: 2px solid rgba(26, 86, 219, 0.1);
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .nav-tabs-custom .nav-link {
+            background: transparent;
+            color: var(--text-color);
+            border: none;
+            font-weight: 600;
+            padding: 12px 18px;
+            margin: 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .nav-tabs-custom .nav-link:hover {
+            background-color: rgba(26, 86, 219, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .nav-tabs-custom .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.2);
+        }
+        
+        /* Service Card - MOBILE OPTIMIZED */
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-top: 5px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(26, 86, 219, 0.1);
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        /* Price Badge */
+        .price-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        /* Service Features - MOBILE OPTIMIZED */
+        .service-features {
+            margin: 1.5rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .feature-icon {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-right: 10px;
+            min-width: 20px;
+            margin-top: 2px;
+        }
+        
+        /* Button Group in Cards */
+        .btn-group-mobile {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+            flex-direction: column;
+        }
+        
+        .btn-group-mobile .btn-custom {
+            margin-bottom: 0;
+        }
+        
+        /* Service Detail Modal - MOBILE OPTIMIZED */
+        .service-modal .modal-content {
+            border-radius: 12px;
+            border: none;
+        }
+        
+        .service-modal .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px 12px 0 0;
+            padding: 1.2rem 1.5rem;
+            border-bottom: none;
+        }
+        
+        .service-modal .modal-body {
+            padding: 1.5rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .service-modal .modal-footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1.2rem 1.5rem;
+        }
+        
+        /* Equipment List - MOBILE OPTIMIZED */
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .equipment-item {
+            background-color: rgba(26, 86, 219, 0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        
+        /* Service Comparison - MOBILE OPTIMIZED */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Call to Action - MOBILE OPTIMIZED */
+        .services-cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-cta h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .services-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            max-width: 100%;
+            position: relative;
+            z-index: 1;
+            line-height: 1.5;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Service Counter - MOBILE OPTIMIZED */
+        .service-counter {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(26, 86, 219, 0.1);
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .counter-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: block;
+        }
+        
+        .counter-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        
+        /* Service Categories - MOBILE OPTIMIZED */
+        .service-category {
+            margin-bottom: 30px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(26, 86, 219, 0.1);
+        }
+        
+        .category-icon {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            background-color: rgba(26, 86, 219, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        /* Footer - MOBILE OPTIMIZED */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding-top: 50px;
+        }
+        
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 8px;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        /* WhatsApp Float Button - MOBILE OPTIMIZED */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.4s;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Adjustments */
+        @media (min-width: 576px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn-custom {
+                width: auto;
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+            
+            .nav-tabs-custom .nav-link {
+                width: auto;
+                justify-content: flex-start;
+            }
+            
+            .btn-group-mobile {
+                flex-direction: row;
+            }
+            
+            .equipment-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .page-header {
+                padding: 60px 0 40px;
+                margin-bottom: 40px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .service-card {
+                padding: 25px;
+                margin-bottom: 0;
+            }
+            
+            .services-cta {
+                padding: 50px 40px;
+                margin: 50px 0 40px;
+            }
+            
+            .services-cta h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: row;
+            }
+            
+            .cta-buttons .btn-custom {
+                width: auto;
+            }
+            
+            .nav-tabs-custom {
+                flex-direction: row;
+            }
+            
+            .nav-tabs-custom .nav-link {
+                font-size: 1rem;
+            }
+            
+            .equipment-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .comparison-table {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .page-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu .nav-link {
+                width: auto;
+                margin: 0 5px;
+                text-align: center;
+            }
+            
+            .service-modal .modal-body {
+                max-height: 60vh;
+            }
+            
+            .whatsapp-btn {
+                width: auto;
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+        
+        /* Utility classes for mobile */
+        .mobile-only {
+            display: block;
+        }
+        
+        .desktop-only {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .desktop-only {
+                display: block;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        button, 
+        .btn-custom,
+        a,
+        .nav-link,
+        .social-icons a {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        /* Prevent long words from breaking layout */
+        .service-card h3,
+        .category-title,
+        .testimonial-text {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Improved spacing for mobile */
+        .mb-mobile-3 {
+            margin-bottom: 1rem;
+        }
+        
+        .mb-mobile-4 {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Mobile menu improvements */
+        .navbar-collapse {
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Fix for iOS form zoom */
+        @media screen and (max-width: 768px) {
+            input,
+            select,
+            textarea {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Better text readability on mobile */
+        p, li, span, .service-card p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Tab content spacing */
+        .tab-content {
+            padding: 15px 0;
+        }
+        
+        /* Modal adjustments for mobile */
+        .modal-dialog {
+            margin: 10px;
+        }
+        
+        /* Scrollable modal content */
+        .modal-body {
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
+        }
+        
+        /* Grid layout for service cards */
+        .row.g-4 {
+            row-gap: 20px !important;
+        }
+        
+        /* Button sizes in modal footer */
+        .modal-footer .btn-custom {
+            flex: 1;
+            min-width: 120px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
+        <div class="container">
             <div class="logo">
-                <span class="logo-icon">🔘</span>
-                <h1>GLOBAL PRODUCTION PONOROGO</h1>
+                <span class="logo-icon"><i class="fas fa-broadcast-tower"></i></span>
+                <h1 class="h4 mb-0">GLOBAL PRODUCTION<br><small class="fs-6">PONOROGO</small></h1>
             </div>
             
-            <div class="nav-menu">
-                <a href="index.html">Home</a>
-                <a href="services.html" class="active">Services</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="testimonials.html">Testimonials</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                   target="_blank" class="whatsapp-btn">
-                   <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
-            
-            <button class="mobile-menu-btn">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto align-items-center">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link active" href="services.html">Layanan</a>
+                    <a class="nav-link" href="gallery.html">Galeri</a>
+                    <a class="nav-link" href="testimonials.html">Testimoni</a>
+                    <a class="nav-link" href="contact.html">Kontak</a>
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                       target="_blank" class="whatsapp-btn mobile-only">
+                       <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                       target="_blank" class="whatsapp-btn desktop-only">
+                       <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Services Page Content -->
-    <section class="services-page">
+    <!-- Page Header -->
+    <section class="page-header">
         <div class="container">
-            <div class="page-header" style="margin-bottom: 40px;">
-                <h1><i class="fas fa-volume-up"></i> Layanan Kami</h1>
-                <p>Solusi lengkap untuk semua kebutuhan event production Anda</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-volume-up"></i>
+            <div class="row justify-content-center">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h1><i class="fas fa-volume-up"></i> Layanan Profesional Kami</h1>
+                    <p>Solusi lengkap untuk semua kebutuhan event production Anda. Dari sound system hingga full event production - kami siap membantu acara Anda sukses!</p>
+                    
+                    <div class="page-action mt-3 d-flex flex-column flex-sm-row justify-content-center gap-2">
+                        <a href="#contact-services" class="btn-custom btn-primary-custom">
+                            <i class="fas fa-calendar-check"></i> Konsultasi Gratis
+                        </a>
+                        <a href="gallery.html" class="btn-custom btn-secondary-custom">
+                            <i class="fas fa-images"></i> Lihat Portofolio
+                        </a>
+                        <a href="tel:+6282134567890" class="btn-custom btn-whatsapp-custom">
+                            <i class="fas fa-phone"></i> Telepon Sekarang
+                        </a>
                     </div>
-                    <h3>Sound System Professional</h3>
-                    <p>Penyewaan sound system berkualitas tinggi untuk segala jenis acara dengan teknisi ahli.</p>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Sound%20System" 
-                       target="_blank" class="service-link">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Production Syuting</h3>
-                    <p>Layanan produksi video dan syuting profesional untuk film, iklan, dan dokumentasi.</p>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Production%20Syuting" 
-                       target="_blank" class="service-link">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-photo-video"></i>
-                    </div>
-                    <h3>Multimedia Solution</h3>
-                    <p>Solusi multimedia lengkap termasuk proyektor, LED wall, dan peralatan presentasi.</p>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Multimedia" 
-                       target="_blank" class="service-link">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Event Organizer</h3>
-                    <p>Jasa event organizer profesional untuk mengatur acara dari konsep hingga eksekusi.</p>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Event%20Organizer" 
-                       target="_blank" class="service-link">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Lighting System</h3>
-                    <p>Sistem pencahayaan profesional untuk konser, panggung, dan event indoor/outdoor.</p>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Lighting" 
-                       target="_blank" class="service-link">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-theater-masks"></i>
-                    </div>
-                    <h3>Stage & Panggung</h3>
-                    <p>Penyewaan panggung profesional dengan berbagai ukuran dan konfigurasi.</p>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Stage%20%26%20Panggung" 
-                       target="_blank" class="service-link">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Rigging System</h3>
-                    <p>Sistem rigging aman untuk menggantung lighting, audio, dan properti panggung.</p>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Rigging" 
-                       target="_blank" class="service-link">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Instalasi Permanent</h3>
-                    <p>Instalasi sistem audio, lighting, dan multimedia permanen untuk venue.</p>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Instalasi%20Permanent" 
-                       target="_blank" class="service-link">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             
-            <!-- Tombol navigasi -->
-            <div class="page-navigation center">
-                <a href="gallery.html" class="nav-link">
-                    <i class="fas fa-images"></i>
-                    <span>Lihat Galeri Pekerjaan Kami</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="testimonials.html" class="nav-link">
-                    <i class="fas fa-star"></i>
-                    <span>Lihat Testimoni Klien</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="contact.html" class="nav-link">
-                    <i class="fas fa-envelope"></i>
-                    <span>Hubungi Kami</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+            <!-- Service Counter - MOBILE FRIENDLY -->
+            <div class="row mt-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-6 col-sm-3">
+                    <div class="service-counter">
+                        <span class="counter-number">8+</span>
+                        <span class="counter-label">Jenis Layanan</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <div class="service-counter">
+                        <span class="counter-number">500+</span>
+                        <span class="counter-label">Acara Sukses</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <div class="service-counter">
+                        <span class="counter-number">100%</span>
+                        <span class="counter-label">Garansi Peralatan</span>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-3">
+                    <div class="service-counter">
+                        <span class="counter-number">24/7</span>
+                        <span class="counter-label">Support Teknis</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Services Tabs -->
+    <section class="services-tabs">
+        <div class="container">
+            <ul class="nav nav-tabs nav-tabs-custom" id="servicesTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">
+                        <i class="fas fa-th-large"></i> Semua
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="audio-tab" data-bs-toggle="tab" data-bs-target="#audio" type="button" role="tab">
+                        <i class="fas fa-volume-up"></i> Audio
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="video-tab" data-bs-toggle="tab" data-bs-target="#video" type="button" role="tab">
+                        <i class="fas fa-video"></i> Video
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="lighting-tab" data-bs-toggle="tab" data-bs-target="#lighting" type="button" role="tab">
+                        <i class="fas fa-lightbulb"></i> Lighting
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="stage-tab" data-bs-toggle="tab" data-bs-target="#stage" type="button" role="tab">
+                        <i class="fas fa-theater-masks"></i> Stage
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Services Content -->
+    <section class="services-content">
+        <div class="container">
+            <div class="tab-content" id="servicesTabContent">
+                <!-- All Services Tab -->
+                <div class="tab-pane fade show active" id="all" role="tabpanel">
+                    <div class="row g-4">
+                        <!-- Sound System -->
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up">
+                            <div class="service-card">
+                                <div class="price-badge">Mulai 1.5jt</div>
+                                <div class="service-icon">
+                                    <i class="fas fa-volume-up"></i>
+                                </div>
+                                <h3>Sound System Professional</h3>
+                                <p>Penyewaan sound system berkualitas tinggi untuk segala jenis acara dengan teknisi ahli.</p>
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Line Array System</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Mixing Console Digital</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Wireless Microphone</span>
+                                    </div>
+                                </div>
+                                <div class="btn-group-mobile">
+                                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Sound%20System" 
+                                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                                        <i class="fab fa-whatsapp"></i> Pesan
+                                    </a>
+                                    <button class="btn-custom btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#soundModal">
+                                        <i class="fas fa-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Production Syuting -->
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-card">
+                                <div class="price-badge">Mulai 3jt</div>
+                                <div class="service-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h3>Production Syuting</h3>
+                                <p>Layanan produksi video dan syuting profesional untuk film, iklan, dan dokumentasi.</p>
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Camera 4K/8K</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Drone Aerial Shots</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Live Streaming</span>
+                                    </div>
+                                </div>
+                                <div class="btn-group-mobile">
+                                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Production%20Syuting" 
+                                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                                        <i class="fab fa-whatsapp"></i> Pesan
+                                    </a>
+                                    <button class="btn-custom btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#productionModal">
+                                        <i class="fas fa-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Multimedia Solution -->
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="200">
+                            <div class="service-card">
+                                <div class="price-badge">Mulai 1.2jt</div>
+                                <div class="service-icon">
+                                    <i class="fas fa-photo-video"></i>
+                                </div>
+                                <h3>Multimedia Solution</h3>
+                                <p>Solusi multimedia lengkap termasuk proyektor, LED wall, dan peralatan presentasi.</p>
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>LED Wall Rental</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Projector 10K Lumens</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Video Conference</span>
+                                    </div>
+                                </div>
+                                <div class="btn-group-mobile">
+                                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Multimedia" 
+                                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                                        <i class="fab fa-whatsapp"></i> Pesan
+                                    </a>
+                                    <button class="btn-custom btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#multimediaModal">
+                                        <i class="fas fa-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Event Organizer -->
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="300">
+                            <div class="service-card">
+                                <div class="price-badge">Mulai 5jt</div>
+                                <div class="service-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <h3>Event Organizer</h3>
+                                <p>Jasa event organizer profesional untuk mengatur acara dari konsep hingga eksekusi.</p>
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Full Package</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Event Planning</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Vendor Management</span>
+                                    </div>
+                                </div>
+                                <div class="btn-group-mobile">
+                                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Event%20Organizer" 
+                                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                                        <i class="fab fa-whatsapp"></i> Pesan
+                                    </a>
+                                    <button class="btn-custom btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#eventModal">
+                                        <i class="fas fa-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Lighting System -->
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up">
+                            <div class="service-card">
+                                <div class="price-badge">Mulai 800k</div>
+                                <div class="service-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h3>Lighting System</h3>
+                                <p>Sistem pencahayaan profesional untuk konser, panggung, dan event indoor/outdoor.</p>
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Moving Head Lights</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>LED Pars & Bars</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Laser & Effect</span>
+                                    </div>
+                                </div>
+                                <div class="btn-group-mobile">
+                                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Lighting" 
+                                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                                        <i class="fab fa-whatsapp"></i> Pesan
+                                    </a>
+                                    <button class="btn-custom btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#lightingModal">
+                                        <i class="fas fa-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage & Panggung -->
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-card">
+                                <div class="price-badge">Mulai 2.5jt</div>
+                                <div class="service-icon">
+                                    <i class="fas fa-theater-masks"></i>
+                                </div>
+                                <h3>Stage & Panggung</h3>
+                                <p>Penyewaan panggung profesional dengan berbagai ukuran dan konfigurasi.</p>
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Modular Stage System</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Canopy & Roofing</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Backdrop & Decoration</span>
+                                    </div>
+                                </div>
+                                <div class="btn-group-mobile">
+                                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Stage%20%26%20Panggung" 
+                                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                                        <i class="fab fa-whatsapp"></i> Pesan
+                                    </a>
+                                    <button class="btn-custom btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#stageModal">
+                                        <i class="fas fa-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Rigging System -->
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="200">
+                            <div class="service-card">
+                                <div class="price-badge">Mulai 1jt</div>
+                                <div class="service-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h3>Rigging System</h3>
+                                <p>Sistem rigging aman untuk menggantung lighting, audio, dan properti panggung.</p>
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Truss System</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Motor Hoist</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Safety Certified</span>
+                                    </div>
+                                </div>
+                                <div class="btn-group-mobile">
+                                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Rigging" 
+                                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                                        <i class="fab fa-whatsapp"></i> Pesan
+                                    </a>
+                                    <button class="btn-custom btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#riggingModal">
+                                        <i class="fas fa-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Instalasi Permanent -->
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3" data-aos="fade-up" data-aos-delay="300">
+                            <div class="service-card">
+                                <div class="price-badge">Harga Custom</div>
+                                <div class="service-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h3>Instalasi Permanent</h3>
+                                <p>Instalasi sistem audio, lighting, dan multimedia permanen untuk venue.</p>
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Custom Design</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Maintenance Service</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check-circle feature-icon"></i>
+                                        <span>Warranty Included</span>
+                                    </div>
+                                </div>
+                                <div class="btn-group-mobile">
+                                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%20Instalasi%20Permanent" 
+                                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                                        <i class="fab fa-whatsapp"></i> Konsultasi
+                                    </a>
+                                    <button class="btn-custom btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#installationModal">
+                                        <i class="fas fa-info-circle"></i> Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other tabs (simplified for mobile) -->
+                <div class="tab-pane fade" id="audio" role="tabpanel">
+                    <div class="service-category">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <h3 class="category-title">Layanan Audio Profesional</h3>
+                        </div>
+                        <div class="text-center mb-4">
+                            <p>Untuk detail lengkap semua layanan audio, silakan lihat tab "Semua Layanan" atau hubungi kami langsung.</p>
+                            <a href="tel:+6282134567890" class="btn-custom btn-primary-custom mt-2">
+                                <i class="fas fa-phone"></i> Konsultasi Audio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="video" role="tabpanel">
+                    <div class="service-category">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h3 class="category-title">Layanan Video & Multimedia</h3>
+                        </div>
+                        <div class="text-center mb-4">
+                            <p>Untuk detail lengkap semua layanan video, silakan lihat tab "Semua Layanan" atau hubungi kami langsung.</p>
+                            <a href="tel:+6282134567890" class="btn-custom btn-primary-custom mt-2">
+                                <i class="fas fa-phone"></i> Konsultasi Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="lighting" role="tabpanel">
+                    <div class="service-category">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="category-title">Layanan Lighting System</h3>
+                        </div>
+                        <div class="text-center mb-4">
+                            <p>Untuk detail lengkap semua layanan lighting, silakan lihat tab "Semua Layanan" atau hubungi kami langsung.</p>
+                            <a href="tel:+6282134567890" class="btn-custom btn-primary-custom mt-2">
+                                <i class="fas fa-phone"></i> Konsultasi Lighting
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="stage" role="tabpanel">
+                    <div class="service-category">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="fas fa-theater-masks"></i>
+                            </div>
+                            <h3 class="category-title">Layanan Stage & Panggung</h3>
+                        </div>
+                        <div class="text-center mb-4">
+                            <p>Untuk detail lengkap semua layanan stage, silakan lihat tab "Semua Layanan" atau hubungi kami langsung.</p>
+                            <a href="tel:+6282134567890" class="btn-custom btn-primary-custom mt-2">
+                                <i class="fas fa-phone"></i> Konsultasi Stage
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="services-cta" id="contact-services" data-aos="fade-up">
+                <h2>Butuh Konsultasi Layanan?</h2>
+                <p>Tim ahli kami siap membantu Anda memilih layanan yang tepat untuk acara Anda. Konsultasi gratis tanpa biaya!</p>
+                
+                <div class="cta-buttons d-flex flex-column flex-sm-row">
+                    <a href="contact.html" class="btn-custom btn-secondary-custom mb-2 mb-sm-0 me-sm-2">
+                        <i class="fas fa-calendar-alt"></i> Request Quote
+                    </a>
+                    <a href="tel:+6282134567890" class="btn-custom btn-secondary-custom mb-2 mb-sm-0 me-sm-2">
+                        <i class="fas fa-phone"></i> Telepon Kami
+                    </a>
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20konsultasi%20tentang%20layanan%20untuk%20acara%20saya%3A" 
+                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                       <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="gallery.html" class="text-white text-decoration-underline d-block">
+                        <i class="fas fa-arrow-right me-2"></i> Lihat hasil kerja kami di galeri
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Detail Modals -->
+    <!-- Sound System Modal -->
+    <div class="modal fade service-modal" id="soundModal" tabindex="-1" aria-labelledby="soundModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="soundModalLabel">
+                        <i class="fas fa-volume-up me-2"></i> Sound System Professional
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="mb-3">Solusi Audio Terbaik untuk Acara Anda</h4>
+                    <p>Kami menyediakan sistem audio profesional untuk segala jenis acara, mulai dari pernikahan, konser, seminar, hingga festival besar.</p>
+                    
+                    <div class="service-features">
+                        <h5>Fitur Utama:</h5>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span><strong>Line Array System</strong> - Jangkauan suara optimal untuk area luas</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span><strong>Digital Mixing Console</strong> - Kontrol audio presisi dengan efek digital</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span><strong>Wireless Microphone System</strong> - Fleksibilitas gerak untuk MC dan performer</span>
+                        </div>
+                    </div>
+                    
+                    <div class="equipment-grid mt-4">
+                        <div class="equipment-item">Line Array JBL/VTX</div>
+                        <div class="equipment-item">Midas M32 Console</div>
+                        <div class="equipment-item">Shure Wireless Mic</div>
+                        <div class="equipment-item">Subwoofer 18"</div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Paket Harga:</h5>
+                        <div class="table-responsive">
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>Paket</th>
+                                        <th>Kapasitas</th>
+                                        <th>Harga/Hari</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Basic</td>
+                                        <td>200-500 orang</td>
+                                        <td>Rp 1.500.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Standard</td>
+                                        <td>500-1000 orang</td>
+                                        <td>Rp 2.500.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Premium</td>
+                                        <td>1000-3000 orang</td>
+                                        <td>Rp 5.000.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex flex-column flex-sm-row">
+                    <button type="button" class="btn-custom btn-secondary-custom mb-2 mb-sm-0 me-sm-2" data-bs-dismiss="modal">Tutup</button>
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20tertarik%20dengan%20layanan%20Sound%20System%20Professional%2C%20bisa%20minta%20info%20lebih%20detail%3F" 
+                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                       <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add similar modals for other services (you can duplicate and modify the soundModal for other services) -->
+    <!-- Production Modal -->
+    <div class="modal fade service-modal" id="productionModal" tabindex="-1" aria-labelledby="productionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productionModalLabel">
+                        <i class="fas fa-video me-2"></i> Production Syuting
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="mb-3">Layanan Produksi Video Profesional</h4>
+                    <p>Kami menyediakan layanan produksi video lengkap untuk kebutuhan film, iklan, dokumentasi, dan live streaming.</p>
+                    
+                    <div class="service-features">
+                        <h5>Fitur Utama:</h5>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span><strong>Camera 4K/8K</strong> - Kualitas gambar terbaik</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span><strong>Drone Aerial Shots</strong> - Pengambilan gambar udara</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <span><strong>Live Streaming Setup</strong> - Streaming kualitas tinggi</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Paket Harga:</h5>
+                        <div class="table-responsive">
+                            <table class="comparison-table">
+                                <thead>
+                                    <tr>
+                                        <th>Paket</th>
+                                        <th>Durasi</th>
+                                        <th>Harga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Basic</td>
+                                        <td>4 Jam</td>
+                                        <td>Rp 3.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Standard</td>
+                                        <td>8 Jam</td>
+                                        <td>Rp 5.000.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Full Day</td>
+                                        <td>12 Jam</td>
+                                        <td>Rp 8.000.000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex flex-column flex-sm-row">
+                    <button type="button" class="btn-custom btn-secondary-custom mb-2 mb-sm-0 me-sm-2" data-bs-dismiss="modal">Tutup</button>
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20tertarik%20dengan%20layanan%20Production%20Syuting%2C%20bisa%20minta%20info%20lebih%20detail%3F" 
+                       target="_blank" class="btn-custom btn-whatsapp-custom">
+                       <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <!-- Google Maps Section -->
-            <div class="maps-section">
-                <div class="maps-header">
+            <div class="maps-section mb-4">
+                <div class="maps-header text-center mb-3">
                     <h3><i class="fas fa-map-marker-alt"></i> Lokasi Kami</h3>
                     <p>Kunjungi kantor kami di Jl. Soekarno Hatta Ponorogo</p>
                 </div>
                 
-                <div class="maps-wrapper">
-                    <div class="google-maps">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.57461384212!2d111.4887810750884!3d-7.9394162920846325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e790b0047696b81%3A0xda7f0af71aa4e4f6!2sGLOBAL%20PRODUCTION!5e0!3m2!1sid!2sid!4v1769149121996!5m2!1sid!2sid" 
-                            width="100%" 
-                            height="250" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                        <div class="maps-overlay">
-                            <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="maps-link">
-                                <i class="fas fa-external-link-alt"></i> Buka di Maps
-                            </a>
-                            <a href="https://maps.app.goo.gl/?link=https://www.google.com/maps/place/GLOBAL%20PRODUCTION/@-7.9394163,111.4887811,17z?entry=ttu" 
-                               target="_blank" class="maps-link">
-                                <i class="fas fa-directions"></i> Dapatkan Rute
-                            </a>
+                <div class="row g-3">
+                    <div class="col-lg-8" data-aos="fade-right">
+                        <div class="google-maps">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.57461384212!2d111.4887810750884!3d-7.9394162920846325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e790b0047696b81%3A0xda7f0af71aa4e4f6!2sGLOBAL%20PRODUCTION!5e0!3m2!1sid!2sid!4v1769149121996!5m2!1sid!2sid" 
+                                width="100%" 
+                                height="250" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                            <div class="maps-overlay d-flex p-2 flex-wrap">
+                                <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="btn btn-outline-light me-2 mb-1">
+                                    <i class="fas fa-external-link-alt"></i> Buka di Maps
+                                </a>
+                                <a href="https://maps.app.goo.gl/?link=https://www.google.com/maps/place/GLOBAL%20PRODUCTION/@-7.9394163,111.4887811,17z?entry=ttu" 
+                                   target="_blank" class="btn btn-light mb-1">
+                                    <i class="fas fa-directions"></i> Dapatkan Rute
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="maps-info">
-                        <h4><i class="fas fa-info-circle"></i> Informasi Lokasi</h4>
-                        <div class="info-detail">
-                            <i class="fas fa-map-pin"></i>
-                            <div>
-                                <strong>Alamat Lengkap:</strong>
-                                <p>JL Soekarno Hatta No. 123, Ponorogo, Jawa Timur 63411</p>
+                    <div class="col-lg-4" data-aos="fade-left">
+                        <div class="maps-info h-100">
+                            <h4><i class="fas fa-info-circle"></i> Informasi Lokasi</h4>
+                            <div class="info-detail d-flex mb-2">
+                                <i class="fas fa-map-pin mt-1 me-2 text-primary"></i>
+                                <div>
+                                    <strong>Alamat:</strong>
+                                    <p>JL Soekarno Hatta No. 123, Ponorogo, Jawa Timur 63411</p>
+                                </div>
                             </div>
-                        </div>                        
-                        <div class="maps-actions">
-                            <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="btn-maps">
-                                <i class="fas fa-map-marked-alt"></i> Maps
-                            </a>
-                            <a href="tel:+6282134567890" class="btn-maps-secondary">
-                                <i class="fas fa-phone"></i> Telepon
-                            </a>
-                            <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                               target="_blank" class="btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i> WA
-                            </a>
+                            <div class="info-detail d-flex mb-2">
+                                <i class="fas fa-clock mt-1 me-2 text-primary"></i>
+                                <div>
+                                    <strong>Jam Operasional:</strong>
+                                    <p>Senin - Sabtu: 08:00 - 17:00 WIB</p>
+                                    <p>Minggu: 09:00 - 15:00 WIB</p>
+                                </div>
+                            </div>
+                            <div class="info-detail d-flex mb-2">
+                                <i class="fas fa-phone mt-1 me-2 text-primary"></i>
+                                <div>
+                                    <strong>Kontak:</strong>
+                                    <p>+62 821 3456 7890</p>
+                                </div>
+                            </div>
+                            <div class="maps-actions mt-3 d-flex flex-wrap">
+                                <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="btn btn-outline-light mb-1 me-1">
+                                    <i class="fas fa-map-marked-alt"></i> Maps
+                                </a>
+                                <a href="tel:+6282134567890" class="btn btn-light mb-1 me-1">
+                                    <i class="fas fa-phone"></i> Telepon
+                                </a>
+                                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                                   target="_blank" class="btn btn-success mb-1">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Main Footer Content -->
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-icon">🔘</span>
-                    <h2>GLOBAL PRODUCTION PONOROGO</h2>
-                    <p>Solusi Event Production Profesional</p>
-                    
-                    <!-- Social Media Icons -->
-                    <div class="social-media">
-                        <h4>Ikuti Kami</h4>
-                        <div class="social-icons">
-                            <a href="https://instagram.com/globalproductionponorogo" target="_blank" class="social-icon instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://facebook.com/globalproductionponorogo" target="_blank" class="social-icon facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://tiktok.com/@globalproductionponorogo" target="_blank" class="social-icon tiktok">
-                                <i class="fab fa-tiktok"></i>
-                            </a>
-                            <a href="https://youtube.com/@globalproductionponorogo" target="_blank" class="social-icon youtube">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                            <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                               target="_blank" class="social-icon whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
+            <div class="row g-3 mb-4">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="footer-logo">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="logo-icon"><i class="fas fa-broadcast-tower"></i></span>
+                            <h2 class="h4 mb-0 ms-2">GLOBAL PRODUCTION<br><small>PONOROGO</small></h2>
+                        </div>
+                        <p>Solusi Event Production Profesional</p>
+                        
+                        <!-- Social Media Icons -->
+                        <div class="social-media mt-3">
+                            <h4>Ikuti Kami</h4>
+                            <div class="social-icons d-flex mb-3">
+                                <a href="https://instagram.com/globalproductionponorogo" target="_blank" class="social-icon instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://facebook.com/globalproductionponorogo" target="_blank" class="social-icon facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://tiktok.com/@globalproductionponorogo" target="_blank" class="social-icon tiktok">
+                                    <i class="fab fa-tiktok"></i>
+                                </a>
+                                <a href="https://youtube.com/@globalproductionponorogo" target="_blank" class="social-icon youtube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                                   target="_blank" class="social-icon whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-links">
+                        <h3>Tautan Cepat</h3>
+                        <a href="index.html" class="d-block mb-2"><i class="fas fa-home me-2"></i> Home</a>
+                        <a href="services.html" class="d-block mb-2"><i class="fas fa-volume-up me-2"></i> Layanan</a>
+                        <a href="gallery.html" class="d-block mb-2"><i class="fas fa-images me-2"></i> Galeri</a>
+                        <a href="testimonials.html" class="d-block mb-2"><i class="fas fa-star me-2"></i> Testimoni</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer-contact">
+                        <h3>Hubungi Kami</h3>
+                        <div class="contact-item d-flex mb-3">
+                            <i class="fas fa-map-marker-alt mt-1 me-3"></i>
+                            <div>
+                                <h4>Alamat</h4>
+                                <p>JL Soekarno Hatta No. 123, Ponorogo, Jawa Timur 63411</p>
+                                <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="maps-link-small d-block mt-1">
+                                    <i class="fas fa-external-link-alt"></i> Lihat di Maps
+                                </a>
+                            </div>
                         </div>
                         
-                        <div class="social-links">
-                            <a href="https://instagram.com/globalproductionponorogo" target="_blank">
-                                <i class="fab fa-instagram"></i> @globalproductionponorogo
-                            </a>
-                            <a href="https://tiktok.com/@globalproductionponorogo" target="_blank">
-                                <i class="fab fa-tiktok"></i> @globalproductionponorogo
-                            </a>
-                            <a href="https://facebook.com/globalproductionponorogo" target="_blank">
-                                <i class="fab fa-facebook-f"></i> Global Production Ponorogo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Tautan Cepat</h3>
-                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                    <a href="services.html"><i class="fas fa-volume-up"></i> Layanan</a>
-                    <a href="gallery.html"><i class="fas fa-images"></i> Galeri</a>
-                    <a href="testimonials.html"><i class="fas fa-star"></i> Testimoni</a>
-                    <a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a>
-                    <a href="maps.html"><i class="fas fa-map-marker-alt"></i> Lokasi</a>
-                </div>
-                
-                <div class="footer-contact">
-                    <h3>Hubungi Kami</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Alamat</h4>
-                            <p>JL Soekarno Hatta No. 123, Ponorogo, Jawa Timur 63411</p>
-                            <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="maps-link-small">
-                                <i class="fas fa-external-link-alt"></i> Lihat di Maps
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Telepon & WhatsApp</h4>
-                            <p>+62 821 3456 7890</p>
-                            <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                               target="_blank" class="whatsapp-link">
-                               <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@globalproductionponorogo.com</p>
+                        <div class="contact-item d-flex mb-3">
+                            <i class="fas fa-phone mt-1 me-3"></i>
+                            <div>
+                                <h4>Telepon & WhatsApp</h4>
+                                <p>+62 821 3456 7890</p>
+                                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                                   target="_blank" class="d-inline-block mt-2 btn-custom btn-whatsapp-custom">
+                                   <i class="fab fa-whatsapp"></i> Chat via WhatsApp
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; <script>document.write(new Date().getFullYear())</script> GLOBAL PRODUCTION PONOROGO. Semua hak dilindungi.</p>
-                    
-                    <div class="footer-extra">
-                        <a href="#">Kebijakan Privasi</a>
-                        <a href="#">Syarat & Ketentuan</a>
-                        <a href="sitemap.html">Peta Situs</a>
-                        <a href="maps.html">
-                            <i class="fas fa-map-marker-alt"></i> Lokasi
-                        </a>
+            <div class="footer-bottom pt-3 border-top border-secondary" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-6 mb-2 mb-md-0">
+                        <p>&copy; <span id="currentYear"></span> GLOBAL PRODUCTION PONOROGO. Semua hak dilindungi.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-extra d-flex flex-wrap justify-content-md-end">
+                            <a href="#" class="me-3 mb-2">Kebijakan Privasi</a>
+                            <a href="#" class="me-3 mb-2">Syarat & Ketentuan</a>
+                            <a href="maps.html" class="mb-2">
+                                <i class="fas fa-map-marker-alt"></i> Lokasi
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -309,8 +1676,197 @@
     
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-       target="_blank" class="whatsapp-float mobile-whatsapp">
+       target="_blank" class="whatsapp-float">
        <i class="fab fa-whatsapp"></i>
     </a>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+            disable: window.innerWidth < 768 ? true : false
+        });
+        
+        // Re-enable AOS on mobile after page load
+        window.addEventListener('load', function() {
+            if (window.innerWidth < 768) {
+                AOS.refresh();
+            }
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Service counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                const increment = target / 50;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current) + (counter.textContent.includes('+') ? '+' : '');
+                        setTimeout(updateCounter, 30);
+                    } else {
+                        counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+        
+        // Trigger counter animation when in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        document.querySelectorAll('.service-counter').forEach(item => {
+            observer.observe(item);
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                if (href === '#') return;
+                
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            const navbarToggler = document.querySelector('.navbar-toggler');
+                            navbarToggler.click();
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            
+            if (navbarCollapse.classList.contains('show') && 
+                !navbarCollapse.contains(e.target) && 
+                !navbarToggler.contains(e.target)) {
+                navbarToggler.click();
+            }
+        });
+        
+        // Service card hover effect
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Initialize tabs
+        const triggerTabList = document.querySelectorAll('#servicesTab button[data-bs-toggle="tab"]');
+        triggerTabList.forEach(triggerEl => {
+            const tabTrigger = new bootstrap.Tab(triggerEl);
+            
+            triggerEl.addEventListener('click', event => {
+                event.preventDefault();
+                tabTrigger.show();
+                
+                // Smooth scroll to top of services section on mobile
+                if (window.innerWidth < 768) {
+                    const servicesSection = document.querySelector('.services-content');
+                    if (servicesSection) {
+                        servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+        
+        // Modal handling for mobile
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('shown.bs.modal', function () {
+                // Focus on close button for accessibility
+                const closeBtn = this.querySelector('.btn-close');
+                if (closeBtn) {
+                    setTimeout(() => {
+                        closeBtn.focus();
+                    }, 100);
+                }
+            });
+        });
+        
+        // Touch-friendly improvements
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
 </body>
 </html>
