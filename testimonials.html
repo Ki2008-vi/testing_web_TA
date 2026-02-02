@@ -2,52 +2,1007 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLOBAL PRODUCTION PONOROGO - Testimonials</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GLOBAL PRODUCTION PONOROGO - Testimoni</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1a56db;
+            --primary-dark: #1e40af;
+            --secondary-color: #7e3af2;
+            --accent-color: #f59e0b;
+            --accent-dark: #d97706;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --text-color: #374151;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --info-color: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 70px; /* Adjusted for fixed navbar */
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            line-height: 1.3;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        /* Navigation - MOBILE OPTIMIZED */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 0.8rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1030;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+            color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .logo h1 {
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+        
+        .nav-menu .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 5px 0;
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: left;
+        }
+        
+        .nav-menu .nav-link:hover,
+        .nav-menu .nav-link.active {
+            color: var(--primary-color);
+            background-color: rgba(26, 86, 219, 0.08);
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Page Header - MOBILE OPTIMIZED */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.1) 0%, rgba(126, 58, 242, 0.1) 100%);
+            padding: 40px 0 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        
+        .page-header p {
+            font-size: 1rem;
+            color: var(--text-color);
+            max-width: 100%;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .btn-custom {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .btn-primary-custom:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(26, 86, 219, 0.3);
+        }
+        
+        .btn-secondary-custom {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary-custom:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .btn-whatsapp-custom {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp-custom:hover {
+            background-color: #128C7E;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Rating Overall - MOBILE OPTIMIZED */
+        .rating-overall {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin: 2rem auto;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .score {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        
+        .rating-stars {
+            display: block;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .rating-details {
+            margin-top: 1.5rem;
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .rating-bar span:first-child {
+            width: 30px;
+            color: var(--text-color);
+        }
+        
+        .rating-bar span:last-child {
+            width: 40px;
+            color: var(--text-color);
+            text-align: right;
+        }
+        
+        .bar {
+            flex: 1;
+            height: 8px;
+            background: #E2E8F0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .fill {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+        
+        /* Testimonials Grid - MOBILE OPTIMIZED */
+        .testimonials-container {
+            margin-bottom: 40px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card.featured {
+            border: 2px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        .testimonial-card.featured:before {
+            content: "⭐ FEATURED";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-color);
+            color: white;
+            padding: 4px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.2rem;
+        }
+        
+        .stars {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        .rating-number {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-text {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .client-info {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .client-avatar {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .client-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+        
+        .client-info span {
+            display: block;
+            color: var(--text-color);
+            font-size: 0.85rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .client-info small {
+            color: var(--text-color);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        /* Video Testimonials - MOBILE OPTIMIZED */
+        .video-testimonials {
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-testimonials h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .video-testimonials h2 i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .video-testimonials p {
+            text-align: center;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .video-testimonial {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .video-testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .video-testimonial:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-testimonial:hover .play-button {
+            background: var(--primary-color);
+            color: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-testimonial h4 {
+            padding: 15px 15px 5px;
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .video-testimonial p {
+            padding: 0 15px 15px;
+            color: var(--text-color);
+            margin: 0;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        
+        /* Add Testimonial Form - MOBILE OPTIMIZED */
+        .add-testimonial {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .form-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        .form-container h2 i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .form-container p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px; /* Prevents zoom on iOS */
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+        }
+        
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+        
+        .star-rating input {
+            display: none;
+        }
+        
+        .star-rating label {
+            color: #E2E8F0;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: var(--accent-color);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(26, 86, 219, 0.3);
+        }
+        
+        /* CTA Section - MOBILE OPTIMIZED */
+        .testimonials-cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .testimonials-cta h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonials-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer - MOBILE OPTIMIZED */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding-top: 50px;
+        }
+        
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 8px;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        /* WhatsApp Float Button - MOBILE OPTIMIZED */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.4s;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Adjustments */
+        @media (min-width: 576px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn-custom {
+                width: auto;
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cta-buttons {
+                flex-direction: row;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .page-header {
+                padding: 60px 0 40px;
+                margin-bottom: 40px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+            
+            .video-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .add-testimonial {
+                padding: 30px;
+            }
+            
+            .testimonials-cta {
+                padding: 50px 40px;
+            }
+            
+            .testimonials-cta h2 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-menu .nav-link {
+                width: auto;
+                margin: 0 5px;
+                text-align: center;
+            }
+            
+            .whatsapp-btn {
+                width: auto;
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .page-header h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .video-thumbnail {
+                height: 200px;
+            }
+        }
+        
+        /* Utility classes for mobile */
+        .mobile-only {
+            display: block;
+        }
+        
+        .desktop-only {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .desktop-only {
+                display: block;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        button, 
+        .btn-custom,
+        a,
+        .nav-link,
+        .social-icons a,
+        .play-button,
+        .star-rating label {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        /* Better text readability on mobile */
+        p, li, span, .testimonial-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        /* Mobile menu improvements */
+        .navbar-collapse {
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Fix for iOS form zoom */
+        @media screen and (max-width: 768px) {
+            input,
+            select,
+            textarea {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Button sizes in mobile */
+        .cta-buttons .btn-custom {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        /* Star rating mobile adjustments */
+        .star-rating label {
+            font-size: 2rem;
+        }
+        
+        /* Loading animation */
+        .loader {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(26, 86, 219, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Modal adjustments */
+        .modal-dialog {
+            margin: 10px;
+        }
+        
+        /* Video modal */
+        .video-modal .modal-content {
+            border-radius: 12px;
+        }
+        
+        /* Form validation styling */
+        .form-group input:invalid,
+        .form-group textarea:invalid {
+            border-color: var(--danger-color);
+        }
+        
+        .form-group input:valid,
+        .form-group textarea:valid {
+            border-color: var(--success-color);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <nav class="navbar navbar-expand-lg" id="mainNavbar">
+        <div class="container">
             <div class="logo">
-                <span class="logo-icon">🔘</span>
-                <h1>GLOBAL PRODUCTION PONOROGO</h1>
+                <span class="logo-icon"><i class="fas fa-broadcast-tower"></i></span>
+                <h1 class="h4 mb-0">GLOBAL PRODUCTION<br><small class="fs-6">PONOROGO</small></h1>
             </div>
             
-            <div class="nav-menu">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="testimonials.html" class="active">Testimonials</a>
-                <a href="contact.html">Contact</a>
-                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                   target="_blank" class="whatsapp-btn">
-                   <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
-            
-            <button class="mobile-menu-btn">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto align-items-center">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="services.html">Layanan</a>
+                    <a class="nav-link" href="gallery.html">Galeri</a>
+                    <a class="nav-link active" href="testimonials.html">Testimoni</a>
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                       target="_blank" class="whatsapp-btn mobile-only">
+                       <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
+                       target="_blank" class="whatsapp-btn desktop-only">
+                       <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Testimonials Page Content -->
-    <section class="testimonials-page">
+    <!-- Page Header -->
+    <section class="page-header">
         <div class="container">
-            <div class="page-header">
-                <h1><i class="fas fa-star"></i> Testimoni Klien</h1>
-                <p>Ulasan dari klien yang telah mempercayakan acara mereka kepada kami</p>
-                
-                <div class="page-stats">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h1><i class="fas fa-star"></i> Testimoni Klien</h1>
+                    <p>Ulasan dari klien yang telah mempercayakan acara mereka kepada kami</p>
+                    
+                    <div class="page-action mt-3 d-flex flex-column flex-sm-row justify-content-center gap-2">
+                        <a href="#add-testimonial" class="btn-custom btn-primary-custom">
+                            <i class="fas fa-comment-alt"></i> Tambah Testimoni
+                        </a>
+                        <a href="services.html" class="btn-custom btn-secondary-custom">
+                            <i class="fas fa-volume-up"></i> Lihat Layanan
+                        </a>
+                        <a href="tel:+6282134567890" class="btn-custom btn-whatsapp-custom">
+                            <i class="fas fa-phone"></i> Telepon Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rating Overall -->
+            <div class="row justify-content-center mt-4">
+                <div class="col-12 col-md-8 col-lg-6" data-aos="fade-up">
                     <div class="rating-overall">
                         <div class="rating-score">
                             <span class="score">4.9</span>
-                            <span class="stars">★★★★★</span>
-                            <span class="total">500+ Reviews</span>
+                            <span class="rating-stars">★★★★★</span>
+                            <span class="total">500+ Ulasan</span>
                         </div>
                         <div class="rating-details">
                             <div class="rating-bar">
@@ -79,9 +1034,14 @@
                     </div>
                 </div>
             </div>
-            
+        </div>
+    </section>
+
+    <!-- Testimonials Content -->
+    <section class="testimonials-content">
+        <div class="container">
             <!-- Testimonials Grid -->
-            <div class="testimonials-container">
+            <div class="testimonials-container" data-aos="fade-up">
                 <div class="testimonials-grid">
                     <!-- Testimonial 1 -->
                     <div class="testimonial-card featured">
@@ -121,20 +1081,20 @@
                         </div>
                     </div>
                     
-                    <!-- Testimonial 3 -->
+                                       <!-- Testimonial 3 -->
                     <div class="testimonial-card">
                         <div class="rating">
                             <span class="stars">★★★★★</span>
                             <span class="rating-number">5.0</span>
                         </div>
-                        <p class="testimonial-text">"Rental audio terbaik di Ponorogo! Peralatan lengkap, harga kompetitif, dan pelayanan prima. Mereka membantu membuat resepsi pernikahan kami sempurna. Timnya responsif dan sangat membantu. Terima kasih Global Production!"</p>
+                        <p class="testimonial-text">"Penyewaan lighting untuk acara pernikahan saya sangat memuaskan. Lampu-lampu LED yang mereka sediakan menciptakan atmosfer yang indah dan romantis. Timnya responsif dan profesional, mengatur semuanya tepat waktu."</p>
                         <div class="client-info">
                             <div class="client-avatar">
                                 <i class="fas fa-user-circle"></i>
                             </div>
                             <div>
-                                <h4>Ahmad Rizki</h4>
-                                <span>Pernikahan Pribadi</span>
+                                <h4>Rina Wijaya</h4>
+                                <span>Pernikahan di Gedung Serbaguna</span>
                                 <small>Oktober 2025 • Acara Pernikahan</small>
                             </div>
                         </div>
@@ -146,15 +1106,15 @@
                             <span class="stars">★★★★★</span>
                             <span class="rating-number">5.0</span>
                         </div>
-                        <p class="testimonial-text">"Instalasi sound system di sekolah kami dilakukan dengan sangat profesional. Tim datang tepat waktu, bekerja rapi, dan hasilnya memuaskan. Sistem audio berfungsi sempurna untuk berbagai acara sekolah. Highly recommended!"</p>
+                        <p class="testimonial-text">"Kami memesan layanan EO untuk launching produk baru. Global Production menangani semuanya dengan sangat baik mulai dari konsep, teknis, hingga eksekusi. Acara berjalan lancar dan peserta sangat puas dengan sound system dan visual yang disediakan."</p>
                         <div class="client-info">
                             <div class="client-avatar">
                                 <i class="fas fa-user-circle"></i>
                             </div>
                             <div>
-                                <h4>Dr. Surya Wijaya</h4>
-                                <span>Kepala Sekolah, SMA Negeri 1 Ponorogo</span>
-                                <small>September 2025 • Instalasi Permanen</small>
+                                <h4>Ahmad Fauzi</h4>
+                                <span>Marketing Manager, Innovate Corp</span>
+                                <small>September 2025 • Product Launch</small>
                             </div>
                         </div>
                     </div>
@@ -163,17 +1123,17 @@
                     <div class="testimonial-card">
                         <div class="rating">
                             <span class="stars">★★★★★</span>
-                            <span class="rating-number">5.0</span>
+                            <span class="rating-number">4.8</span>
                         </div>
-                        <p class="testimonial-text">"Layanan lighting untuk festival budaya kami luar biasa! Efek cahaya yang dihasilkan membuat acara semakin spektakuler. Tim teknis sangat menguasai dan bisa menyesuaikan dengan kebutuhan kami. Pelayanan 5 bintang!"</p>
+                        <p class="testimonial-text">"Untuk harga yang ditawarkan, kualitas pelayanan sangat worth it! Sound system untuk acara seminar 500 orang berjalan tanpa kendala. Support teknis selama acara juga sangat membantu ketika ada sedikit kendala dengan mic wireless."</p>
                         <div class="client-info">
                             <div class="client-avatar">
                                 <i class="fas fa-user-circle"></i>
                             </div>
                             <div>
-                                <h4>Maya Fitriani</h4>
-                                <span>Koordinator Festival Reog Ponorogo</span>
-                                <small>Agustus 2025 • Festival Budaya</small>
+                                <h4>Dr. Maya Sari</h4>
+                                <span>Ketua Panitia Seminar Nasional</span>
+                                <small>Agustus 2025 • Seminar Nasional</small>
                             </div>
                         </div>
                     </div>
@@ -184,15 +1144,15 @@
                             <span class="stars">★★★★★</span>
                             <span class="rating-number">5.0</span>
                         </div>
-                        <p class="testimonial-text">"Sebagai EO, saya sudah bekerjasama dengan banyak vendor audio. Global Production adalah yang terbaik di Ponorogo. Responsif, reliable, dan kualitas peralatan terjaga. Tidak pernah mengecewakan!"</p>
+                        <p class="testimonial-text">"Stage dan rigging untuk festival musik kami sangat aman dan kokoh. Tim mereka melakukan inspeksi berkala selama acara berlangsung. Profesionalisme mereka membuat kami tenang meski hujan turun selama acara. Highly recommended!"</p>
                         <div class="client-info">
                             <div class="client-avatar">
                                 <i class="fas fa-user-circle"></i>
                             </div>
                             <div>
-                                <h4>Rina Dewi</h4>
-                                <span>Owner, Prima Event Organizer</span>
-                                <small>Juli 2025 • Berbagai Acara</small>
+                                <h4>Joko Prasetyo</h4>
+                                <span>Ketua Panitia Ponorogo Music Fest</span>
+                                <small>Juli 2025 • Festival Musik</small>
                             </div>
                         </div>
                     </div>
@@ -201,17 +1161,17 @@
                     <div class="testimonial-card">
                         <div class="rating">
                             <span class="stars">★★★★★</span>
-                            <span class="rating-number">5.0</span>
+                            <span class="rating-number">4.9</span>
                         </div>
-                        <p class="testimonial-text">"Sewa panggung dan sound system untuk launching produk kami sangat memuaskan. Setup cepat, peralatan modern, dan tim support standby selama acara. Hasilnya membuat client kami sangat puas."</p>
+                        <p class="testimonial-text">"Proses syuting untuk video company profile kami dibantu dengan peralatan lengkap dari Global Production. Hasil audio sangat jernih dan lighting-nya sempurna untuk indoor shooting. Crew mereka berpengalaman dan sabar meski harus take berkali-kali."</p>
                         <div class="client-info">
                             <div class="client-avatar">
                                 <i class="fas fa-user-circle"></i>
                             </div>
                             <div>
-                                <h4>Andi Pratama</h4>
-                                <span>Marketing Manager, CV Kreatif Media</span>
-                                <small>Juni 2025 • Product Launch</small>
+                                <h4>Dewi Anggraini</h4>
+                                <span>HRD Manager, CV Sejahtera Abadi</span>
+                                <small>Juni 2025 • Company Profile Video</small>
                             </div>
                         </div>
                     </div>
@@ -222,324 +1182,230 @@
                             <span class="stars">★★★★★</span>
                             <span class="rating-number">5.0</span>
                         </div>
-                        <p class="testimonial-text">"Untuk acara syuting dokumenter kami, tim Global Production memberikan dukungan teknis yang luar biasa. Peralatan audio dan lighting yang disediakan membantu menghasilkan kualitas video yang profesional."</p>
+                        <p class="testimonial-text">"Multimedia untuk konferensi kami sangat mengesankan. Dari proyektor, layar, hingga live streaming semua berjalan mulus. Tim teknis selalu standby untuk memastikan tidak ada kendala selama acara berlangsung. Pelayanan luar biasa!"</p>
                         <div class="client-info">
                             <div class="client-avatar">
                                 <i class="fas fa-user-circle"></i>
                             </div>
                             <div>
-                                <h4>Bayu Setiawan</h4>
-                                <span>Producer, Studio 45 Production</span>
-                                <small>Mei 2025 • Production Syuting</small>
+                                <h4>Prof. Dr. Adi Nugroho</h4>
+                                <span>Ketua Konferensi Ilmiah</span>
+                                <small>Mei 2025 • Konferensi Nasional</small>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Video Testimonials -->
-            <div class="video-testimonials">
-                <h2><i class="fas fa-video"></i> Testimoni Video</h2>
-                <p>Dengarkan langsung pengalaman klien kami</p>
                 
-                <div class="video-grid">
-                    <div class="video-testimonial">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Client Testimonial">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <h4>Budi Santoso - Acara Korporat</h4>
-                        <p>"Sound system yang sangat profesional untuk seminar perusahaan"</p>
-                    </div>
-                    
-                    <div class="video-testimonial">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wedding Testimonial">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <h4>Ahmad & Rina - Pernikahan</h4>
-                        <p>"Membuat hari spesial kami semakin sempurna"</p>
-                    </div>
-                    
-                    <div class="video-testimonial">
-                        <div class="video-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Concert Testimonial">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <h4>Siti Nurhaliza - Konser Musik</h4>
-                        <p>"Kualitas audio yang luar biasa untuk pertunjukan live"</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Add Testimonial Form -->
-            <div class="add-testimonial">
-                <div class="form-container">
-                    <h2><i class="fas fa-comment-alt"></i> Bagikan Pengalaman Anda</h2>
-                    <p>Sudah menggunakan layanan kami? Bagikan pengalaman Anda untuk membantu calon klien lainnya</p>
-                    
-                    <form id="testimonialForm">
-                        <div class="form-group">
-                            <label for="clientName">Nama Lengkap</label>
-                            <input type="text" id="clientName" placeholder="Masukkan nama Anda" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="clientPosition">Posisi / Perusahaan</label>
-                            <input type="text" id="clientPosition" placeholder="Contoh: Director, PT Maju Jaya">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="eventType">Jenis Acara</label>
-                            <select id="eventType" required>
-                                <option value="">Pilih jenis acara</option>
-                                <option value="wedding">Pernikahan</option>
-                                <option value="corporate">Korporat</option>
-                                <option value="concert">Konser</option>
-                                <option value="festival">Festival</option>
-                                <option value="installation">Instalasi</option>
-                                <option value="other">Lainnya</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="rating">Rating</label>
-                            <div class="star-rating">
-                                <input type="radio" id="star5" name="rating" value="5">
-                                <label for="star5"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star4" name="rating" value="4">
-                                <label for="star4"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star3" name="rating" value="3">
-                                <label for="star3"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star2" name="rating" value="2">
-                                <label for="star2"><i class="fas fa-star"></i></label>
-                                <input type="radio" id="star1" name="rating" value="1">
-                                <label for="star1"><i class="fas fa-star"></i></label>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="testimonialMessage">Testimoni Anda</label>
-                            <textarea id="testimonialMessage" placeholder="Bagikan pengalaman Anda menggunakan layanan Global Production..." rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-submit">Kirim Testimoni</button>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- CTA Section -->
-            <div class="testimonials-cta">
-                <h2>Bergabung dengan Klien Puas Kami</h2>
-                <p>Ratusan klien telah mempercayakan acara mereka kepada kami. Sekarang giliran Anda!</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn-primary">Konsultasi Gratis</a>
-                    <a href="tel:+6282134567890" class="btn-secondary">Telepon Sekarang</a>
-                    <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20baru%20melihat%20testimoni%20dan%20ingin%20konsultasi%20acara" 
-                       target="_blank" class="btn-whatsapp">
-                       <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
+                <!-- Load More Button -->
+                <div class="text-center mt-5" data-aos="fade-up">
+                    <button id="loadMoreBtn" class="btn-custom btn-primary-custom" style="max-width: 250px; margin: 0 auto;">
+                        <i class="fas fa-spinner d-none"></i>
+                        <span>Muat Lebih Banyak Testimoni</span>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
-
+    
+    <!-- Video Testimonials Section -->
+    <section class="video-testimonials">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2><i class="fas fa-video"></i> Testimoni Video</h2>
+                <p>Lihat pengalaman langsung dari klien kami melalui video testimoni</p>
+            </div>
+            
+            <div class="video-grid" data-aos="fade-up">
+                <!-- Video 1 -->
+                <div class="video-testimonial" data-bs-toggle="modal" data-bs-target="#videoModal1">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1492684223066-e9e4aab4d25e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Testimoni Acara Korporat">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h4>Testimoni Acara Korporat</h4>
+                    <p>PT Maju Jaya Abadi - Desember 2025</p>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-testimonial" data-bs-toggle="modal" data-bs-target="#videoModal2">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Testimoni Konser Musik">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h4>Testimoni Konser Musik</h4>
+                    <p>Harmony Entertainment - November 2025</p>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="video-testimonial" data-bs-toggle="modal" data-bs-target="#videoModal3">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Testimoni Pernikahan">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <h4>Testimoni Acara Pernikahan</h4>
+                    <p>Gedung Serbaguna Ponorogo - Oktober 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Add Testimonial Form -->
+    <section class="add-testimonial" id="add-testimonial" data-aos="fade-up">
+        <div class="container">
+            <div class="form-container">
+                <h2><i class="fas fa-edit"></i> Tambahkan Testimoni Anda</h2>
+                <p>Bagikan pengalaman Anda menggunakan layanan GLOBAL PRODUCTION PONOROGO. Testimoni Anda akan membantu klien lain dalam membuat keputusan.</p>
+                
+                <form id="testimonialForm">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap *</label>
+                                <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="company">Perusahaan / Acara</label>
+                                <input type="text" id="company" name="company" placeholder="Nama perusahaan atau acara">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="email@anda.com">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="service">Layanan yang Digunakan *</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Pilih layanan</option>
+                                    <option value="sound">Sound System</option>
+                                    <option value="lighting">Lighting</option>
+                                    <option value="stage">Stage & Rigging</option>
+                                    <option value="eo">Event Organizer</option>
+                                    <option value="multimedia">Multimedia</option>
+                                    <option value="shooting">Syuting & Produksi</option>
+                                    <option value="full">Paket Lengkap</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Rating *</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5" title="5 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="4 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="3 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="2 stars"><i class="fas fa-star"></i></label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="1 star"><i class="fas fa-star"></i></label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="testimonial">Testimoni Anda *</label>
+                        <textarea id="testimonial" name="testimonial" rows="5" required placeholder="Ceritakan pengalaman Anda menggunakan layanan kami..."></textarea>
+                    </div>
+                    
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="consent" required>
+                        <label class="form-check-label" for="consent">Saya setuju testimoni ini ditampilkan di website GLOBAL PRODUCTION PONOROGO *</label>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">
+                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        <span class="submit-text">Kirim Testimoni</span>
+                    </button>
+                    
+                    <div id="formMessage" class="mt-3"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="testimonials-cta" data-aos="fade-up">
+        <div class="container">
+            <h2>Siap untuk Pengalaman yang Sama?</h2>
+            <p>Bergabunglah dengan ratusan klien yang telah mempercayakan acara mereka kepada kami. Hubungi kami sekarang untuk konsultasi gratis dan penawaran terbaik.</p>
+            
+            <div class="cta-buttons">
+                <a href="tel:+6282134567890" class="btn-custom" style="background-color: white; color: var(--primary-color);">
+                    <i class="fas fa-phone"></i> Telepon Sekarang
+                </a>
+                <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20konsultasi%20tentang%20layanan%20berdasarkan%20testimoni%20yang%20saya%20baca." 
+                   target="_blank" class="btn-custom btn-whatsapp-custom">
+                   <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="services.html" class="btn-custom" style="background-color: rgba(255,255,255,0.2); color: white; border: 2px solid white;">
+                    <i class="fas fa-list"></i> Lihat Layanan
+                </a>
+            </div>
+        </div>
+    </section>
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <!-- Google Maps Section -->
-            <div class="maps-section">
-                <div class="maps-header">
-                    <h3><i class="fas fa-map-marker-alt"></i> Lokasi Kami</h3>
-                    <p>Kunjungi kantor kami di Jl. Soekarno Hatta Ponorogo</p>
+            <div class="row">
+                <div class="col-12 col-lg-4 mb-4">
+                    <div class="logo mb-3">
+                        <span class="logo-icon"><i class="fas fa-broadcast-tower"></i></span>
+                        <h1 class="h4 mb-0">GLOBAL PRODUCTION<br><small class="fs-6">PONOROGO</small></h1>
+                    </div>
+                    <p class="mb-3">Penyedia layanan sound system, lighting, stage, dan event organizer terpercaya di Ponorogo dan sekitarnya.</p>
+                    <div class="social-icons">
+                        <a href="#" style="background-color: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="background-color: #1da1f2;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="background-color: #e1306c;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="background-color: #ff0000;"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 
-                <div class="maps-wrapper">
-                    <div class="google-maps">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.57461384212!2d111.4887810750884!3d-7.9394162920846325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e790b0047696b81%3A0xda7f0af71aa4e4f6!2sGLOBAL%20PRODUCTION!5e0!3m2!1sid!2sid!4v1769149121996!5m2!1sid!2sid" 
-                            width="100%" 
-                            height="250" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
-                        <div class="maps-overlay">
-                            <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="maps-link">
-                                <i class="fas fa-external-link-alt"></i> Buka di Maps
-                            </a>
-                            <a href="https://maps.app.goo.gl/?link=https://www.google.com/maps/place/GLOBAL%20PRODUCTION/@-7.9394163,111.4887811,17z?entry=ttu" 
-                               target="_blank" class="maps-link">
-                                <i class="fas fa-directions"></i> Dapatkan Rute
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="maps-info">
-                        <h4><i class="fas fa-info-circle"></i> Informasi Lokasi</h4>
-                        <div class="info-detail">
-                            <i class="fas fa-map-pin"></i>
-                            <div>
-                                <strong>Alamat Lengkap:</strong>
-                                <p>JL Soekarno Hatta No. 123, Ponorogo, Jawa Timur 63411</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-detail">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <strong>Jam Operasional:</strong>
-                                <p>Senin - Jumat: 8:00 - 17:00<br>
-                                Sabtu: 8:00 - 14:00<br>
-                                Minggu: Libur</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-detail">
-                            <i class="fas fa-car"></i>
-                            <div>
-                                <strong>Akses & Parkir:</strong>
-                                <p>Parkir luas • Akses mudah • Dekat pusat kota</p>
-                            </div>
-                        </div>
-                        
-                        <div class="maps-actions">
-                            <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="btn-maps">
-                                <i class="fas fa-map-marked-alt"></i> Buka Maps
-                            </a>
-                            <a href="tel:+6282134567890" class="btn-maps-secondary">
-                                <i class="fas fa-phone"></i> Telepon
-                            </a>
-                            <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                               target="_blank" class="btn-whatsapp">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
-                            </a>
-                        </div>
-                    </div>
+                <div class="col-12 col-lg-4 mb-4">
+                    <h5 class="mb-3">Layanan Kami</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="services.html#sound"><i class="fas fa-volume-up me-2"></i>Sound System</a></li>
+                        <li class="mb-2"><a href="services.html#lighting"><i class="fas fa-lightbulb me-2"></i>Lighting</a></li>
+                        <li class="mb-2"><a href="services.html#stage"><i class="fas fa-th-large me-2"></i>Stage & Rigging</a></li>
+                        <li class="mb-2"><a href="services.html#eo"><i class="fas fa-calendar-alt me-2"></i>Event Organizer</a></li>
+                        <li class="mb-2"><a href="services.html#multimedia"><i class="fas fa-desktop me-2"></i>Multimedia</a></li>
+                        <li class="mb-2"><a href="services.html#shooting"><i class="fas fa-video me-2"></i>Syuting & Produksi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-12 col-lg-4 mb-4">
+                    <h5 class="mb-3">Kontak Kami</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="https://goo.gl/maps/"><i class="fas fa-map-marker-alt me-2"></i>Jl. Raya Ponorogo No. 123, Ponorogo</a></li>
+                        <li class="mb-2"><a href="tel:+6282134567890"><i class="fas fa-phone me-2"></i>+62 821 3456 7890</a></li>
+                        <li class="mb-2"><a href="mailto:info@globalproductionponorogo.com"><i class="fas fa-envelope me-2"></i>info@globalproductionponorogo.com</a></li>
+                        <li class="mb-2"><i class="fas fa-clock me-2"></i>Buka: Senin - Minggu, 08:00 - 22:00 WIB</li>
+                    </ul>
                 </div>
             </div>
             
-            <!-- Main Footer Content -->
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-icon">🔘</span>
-                    <h2>GLOBAL PRODUCTION PONOROGO</h2>
-                    <p>Solusi Event Production Profesional</p>
-                    
-                    <!-- Social Media Icons -->
-                    <div class="social-media">
-                        <h4>Ikuti Kami</h4>
-                        <div class="social-icons">
-                            <a href="https://instagram.com/globalproductionponorogo" target="_blank" class="social-icon instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://facebook.com/globalproductionponorogo" target="_blank" class="social-icon facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="https://tiktok.com/@globalproductionponorogo" target="_blank" class="social-icon tiktok">
-                                <i class="fab fa-tiktok"></i>
-                            </a>
-                            <a href="https://youtube.com/@globalproductionponorogo" target="_blank" class="social-icon youtube">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                            <a href="https://twitter.com/globalprod_pgr" target="_blank" class="social-icon twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                               target="_blank" class="social-icon whatsapp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="https://instagram.com/globalproductionponorogo" target="_blank">
-                                <i class="fab fa-instagram"></i> @globalproductionponorogo
-                            </a>
-                            <a href="https://tiktok.com/@globalproductionponorogo" target="_blank">
-                                <i class="fab fa-tiktok"></i> @globalproductionponorogo
-                            </a>
-                            <a href="https://facebook.com/globalproductionponorogo" target="_blank">
-                                <i class="fab fa-facebook-f"></i> Global Production Ponorogo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Tautan Cepat</h3>
-                    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-                    <a href="services.html"><i class="fas fa-volume-up"></i> Layanan</a>
-                    <a href="gallery.html"><i class="fas fa-images"></i> Galeri</a>
-                    <a href="testimonials.html"><i class="fas fa-star"></i> Testimoni</a>
-                    <a href="contact.html"><i class="fas fa-envelope"></i> Kontak</a>
-                    <a href="contact.html#quote"><i class="fas fa-quote-right"></i> Get Quote</a>
-                    <a href="maps.html"><i class="fas fa-map-marker-alt"></i> Lokasi</a>
-                </div>
-                
-                <div class="footer-contact">
-                    <h3>Hubungi Kami</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Alamat</h4>
-                            <p>JL Soekarno Hatta No. 123, Ponorogo, Jawa Timur 63411</p>
-                            <a href="https://goo.gl/maps/da7f0af71aa4e4f6" target="_blank" class="maps-link-small">
-                                <i class="fas fa-external-link-alt"></i> Lihat di Maps
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Telepon & WhatsApp</h4>
-                            <p>+62 821 3456 7890</p>
-                            <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-                               target="_blank" class="whatsapp-link">
-                               <i class="fab fa-whatsapp"></i> Chat via WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@globalproductionponorogo.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h4>Jam Kerja</h4>
-                            <p>Senin - Jumat: 8:00 - 17:00<br>
-                               Sabtu: 8:00 - 14:00<br>
-                               Minggu: Libur</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
             
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; <script>document.write(new Date().getFullYear())</script> GLOBAL PRODUCTION PONOROGO. Semua hak dilindungi.</p>
-                    
-                    <div class="footer-extra">
-                        <a href="#">Kebijakan Privasi</a>
-                        <a href="#">Syarat & Ketentuan</a>
-                        <a href="sitemap.html">Peta Situs</a>
-                        <a href="maps.html">
-                            <i class="fas fa-map-marker-alt"></i> Lokasi
-                        </a>
-                    </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 GLOBAL PRODUCTION PONOROGO. Semua Hak Dilindungi.</p>
                 </div>
             </div>
         </div>
@@ -547,532 +1413,279 @@
     
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/+6282134567890?text=Halo%20Global%20Production%20Ponorogo%2C%20Saya%20ingin%20bertanya%20tentang%20layanan%3A%0A%0A-%20Sound%20System%0A-%20Syuting%0A-%20Multimedia%0A-%20Event%20Organizer%0A-%20Lighting%0A-%20Stage%0A-%20Rigging%0A-%20Panggung" 
-       target="_blank" class="whatsapp-float mobile-whatsapp">
-       <i class="fab fa-whatsapp"></i>
+       target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
     </a>
     
-    <script src="js/script.js"></script>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
     
-    <style>
-    .testimonials-page {
-        padding: 120px 0 60px;
-        background: var(--light);
-    }
+    <!-- Video Modals -->
+    <div class="modal fade video-modal" id="videoModal1" tabindex="-1" aria-labelledby="videoModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModal1Label">Testimoni Acara Korporat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Testimoni Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    .page-header {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
+    <div class="modal fade video-modal" id="videoModal2" tabindex="-1" aria-labelledby="videoModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModal2Label">Testimoni Konser Musik</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Testimoni Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    .page-header h1 {
-        color: var(--primary);
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-    }
+    <div class="modal fade video-modal" id="videoModal3" tabindex="-1" aria-labelledby="videoModal3Label" aria-hidden="true">
+        <div class="modal-dismiss modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModal3Label">Testimoni Acara Pernikahan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Testimoni Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    .page-header h1 i {
-        color: var(--secondary);
-    }
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <div class="mb-4" style="font-size: 4rem; color: var(--success-color);">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="mb-3">Terima Kasih!</h3>
+                    <p class="mb-4">Testimoni Anda telah berhasil dikirim dan sedang dalam proses moderasi. Testimoni Anda akan muncul di halaman ini dalam waktu 1x24 jam.</p>
+                    <button type="button" class="btn-custom btn-primary-custom" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    .page-header p {
-        color: var(--gray);
-        font-size: 1.2rem;
-        max-width: 800px;
-        margin: 0 auto 2rem;
-    }
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    .rating-overall {
-        background: var(--white);
-        padding: 2rem;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow);
-        max-width: 500px;
-        margin: 2rem auto;
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .rating-score {
-        text-align: center;
-    }
-    
-    .score {
-        display: block;
-        font-size: 3rem;
-        font-weight: 700;
-        color: var(--primary);
-        line-height: 1;
-    }
-    
-    .stars {
-        display: block;
-        color: #F6B01E;
-        font-size: 1.5rem;
-        margin: 0.5rem 0;
-    }
-    
-    .total {
-        display: block;
-        color: var(--gray);
-        font-size: 0.9rem;
-    }
-    
-    .rating-details {
-        flex: 1;
-        min-width: 250px;
-    }
-    
-    .rating-bar {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .rating-bar span:first-child {
-        width: 30px;
-        color: var(--gray);
-        font-size: 0.9rem;
-    }
-    
-    .rating-bar span:last-child {
-        width: 40px;
-        color: var(--gray);
-        font-size: 0.9rem;
-        text-align: right;
-    }
-    
-    .bar {
-        flex: 1;
-        height: 10px;
-        background: #E2E8F0;
-        border-radius: 5px;
-        overflow: hidden;
-    }
-    
-    .fill {
-        height: 100%;
-        background: #F6B01E;
-        border-radius: 5px;
-    }
-    
-    .testimonials-container {
-        margin-bottom: 4rem;
-    }
-    
-    .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 2rem;
-    }
-    
-    .testimonial-card {
-        background: var(--white);
-        padding: 2rem;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow);
-        transition: transform 0.3s;
-    }
-    
-    .testimonial-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-    }
-    
-    .testimonial-card.featured {
-        border: 2px solid var(--secondary);
-        position: relative;
-    }
-    
-    .testimonial-card.featured:before {
-        content: "⭐ FEATURED";
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--secondary);
-        color: var(--white);
-        padding: 0.25rem 1rem;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-    
-    .rating {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .stars {
-        color: #F6B01E;
-        font-size: 1.2rem;
-    }
-    
-    .rating-number {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--primary);
-    }
-    
-    .testimonial-text {
-        color: var(--dark);
-        margin-bottom: 1.5rem;
-        font-style: italic;
-        line-height: 1.6;
-    }
-    
-    .client-info {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        padding-top: 1rem;
-        border-top: 1px solid var(--light);
-    }
-    
-    .client-avatar {
-        width: 50px;
-        height: 50px;
-        background: var(--primary);
-        color: var(--white);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-    }
-    
-    .client-info h4 {
-        color: var(--primary);
-        margin-bottom: 0.25rem;
-    }
-    
-    .client-info span {
-        display: block;
-        color: var(--gray);
-        font-size: 0.9rem;
-        margin-bottom: 0.25rem;
-    }
-    
-    .client-info small {
-        color: var(--gray);
-        font-size: 0.8rem;
-    }
-    
-    .video-testimonials {
-        margin: 4rem 0;
-        padding: 3rem 0;
-        border-top: 2px solid var(--light);
-        border-bottom: 2px solid var(--light);
-    }
-    
-    .video-testimonials h2 {
-        color: var(--primary);
-        text-align: center;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-    }
-    
-    .video-testimonials h2 i {
-        color: var(--secondary);
-    }
-    
-    .video-testimonials p {
-        text-align: center;
-        color: var(--gray);
-        margin-bottom: 2rem;
-    }
-    
-    .video-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-    
-    .video-testimonial {
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: transform 0.3s;
-    }
-    
-    .video-testimonial:hover {
-        transform: translateY(-5px);
-    }
-    
-    .video-thumbnail {
-        position: relative;
-        height: 200px;
-        overflow: hidden;
-    }
-    
-    .video-thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s;
-    }
-    
-    .video-testimonial:hover .video-thumbnail img {
-        transform: scale(1.1);
-    }
-    
-    .play-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 60px;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: var(--primary);
-        transition: all 0.3s;
-        cursor: pointer;
-    }
-    
-    .video-testimonial:hover .play-button {
-        background: var(--secondary);
-        color: var(--white);
-    }
-    
-    .video-testimonial h4 {
-        padding: 1.5rem 1.5rem 0.5rem;
-        color: var(--primary);
-        margin: 0;
-    }
-    
-    .video-testimonial p {
-        padding: 0 1.5rem 1.5rem;
-        color: var(--gray);
-        margin: 0;
-        text-align: left;
-    }
-    
-    .add-testimonial {
-        background: var(--white);
-        border-radius: var(--radius-lg);
-        padding: 3rem;
-        box-shadow: var(--shadow);
-        margin-bottom: 4rem;
-    }
-    
-    .form-container h2 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .form-container h2 i {
-        color: var(--secondary);
-    }
-    
-    .form-container p {
-        color: var(--gray);
-        margin-bottom: 2rem;
-    }
-    
-    .star-rating {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        gap: 0.5rem;
-    }
-    
-    .star-rating input {
-        display: none;
-    }
-    
-    .star-rating label {
-        color: #E2E8F0;
-        font-size: 2rem;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
-    
-    .star-rating input:checked ~ label,
-    .star-rating label:hover,
-    .star-rating label:hover ~ label {
-        color: #F6B01E;
-    }
-    
-    .testimonials-cta {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: var(--white);
-        padding: 3rem;
-        border-radius: var(--radius-lg);
-        text-align: center;
-    }
-    
-    .testimonials-cta h2 {
-        color: var(--white);
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-    
-    .testimonials-cta p {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .cta-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    @media (max-width: 768px) {
-        .testimonials-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .rating-overall {
-            flex-direction: column;
-            text-align: center;
-            gap: 1rem;
-        }
-        
-        .video-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .add-testimonial {
-            padding: 2rem;
-        }
-        
-        .testimonials-cta {
-            padding: 2rem;
-        }
-        
-        .testimonials-cta h2 {
-            font-size: 1.5rem;
-        }
-        
-        .cta-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .cta-buttons a {
-            width: 100%;
-            max-width: 300px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .page-header h1 {
-            font-size: 2rem;
-        }
-        
-        .star-rating label {
-            font-size: 1.5rem;
-        }
-    }
-    </style>
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Testimonial form submission
-        const testimonialForm = document.getElementById('testimonialForm');
-        if (testimonialForm) {
-            testimonialForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form data
-                const name = document.getElementById('clientName').value;
-                const rating = document.querySelector('input[name="rating"]:checked');
-                
-                if (!rating) {
-                    alert('Silakan berikan rating dengan mengklik bintang');
-                    return;
-                }
-                
-                alert('Terima kasih ' + name + '! Testimoni Anda telah berhasil dikirim. Kami sangat menghargai masukan Anda!');
-                this.reset();
-                
-                // Reset stars
-                const stars = document.querySelectorAll('.star-rating label');
-                stars.forEach(star => {
-                    star.style.color = '#E2E8F0';
-                });
-            });
-        }
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
         
-        // Video play buttons
-        const playButtons = document.querySelectorAll('.play-button');
-        playButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                alert('Video testimoni akan diputar. Untuk melihat video lengkap, hubungi kami atau kunjungi channel YouTube kami.');
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('mainNavbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
         
-        // Star rating hover effect
-        const starLabels = document.querySelectorAll('.star-rating label');
-        starLabels.forEach((label, index) => {
-            label.addEventListener('mouseenter', function() {
-                const labels = Array.from(starLabels).reverse();
-                const hoverIndex = labels.indexOf(this);
+        // Load More Testimonials
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+            const btn = this;
+            const spinner = btn.querySelector('.fa-spinner');
+            const btnText = btn.querySelector('span');
+            
+            // Show loading state
+            spinner.classList.remove('d-none');
+            btnText.textContent = 'Memuat...';
+            btn.disabled = true;
+            
+            // Simulate loading delay
+            setTimeout(function() {
+                // Create new testimonial cards
+                const testimonialsGrid = document.querySelector('.testimonials-grid');
                 
-                labels.forEach((l, i) => {
-                    if (i <= hoverIndex) {
-                        l.style.color = '#F6B01E';
-                    } else {
-                        l.style.color = '#E2E8F0';
+                // Sample additional testimonials
+                const additionalTestimonials = [
+                    {
+                        rating: 5,
+                        text: '"Rigging untuk panggung festival kami sangat aman dan profesional. Tim mereka sangat berhati-hati dalam memasang semua peralatan. Tidak ada kendala selama 3 hari acara berlangsung."',
+                        name: 'Andi Setiawan',
+                        role: 'Ketua Panitia Jazz Festival',
+                        date: 'April 2025 • Festival Jazz',
+                        featured: false
+                    },
+                    {
+                        rating: 5,
+                        text: '"Sound system untuk acara pernikahan adik saya sangat bagus. Suaranya jernih dan tidak ada feedback meski di gedung yang besar. Harga juga sangat kompetitif untuk kualitas yang diberikan."',
+                        name: 'Sari Dewi',
+                        role: 'Pernikahan Keluarga',
+                        date: 'Maret 2025 • Acara Keluarga',
+                        featured: true
+                    },
+                    {
+                        rating: 4,
+                        text: '"Lighting untuk pameran produk kami menarik banyak perhatian pengunjung. Desain lampu yang kreatif membuat booth kami menonjol. Hanya sedikit kendala teknis di hari pertama yang cepat ditangani."',
+                        name: 'Rudi Hartono',
+                        role: 'Marketing Executive',
+                        date: 'Februari 2025 • Pameran Produk',
+                        featured: false
+                    },
+                    {
+                        rating: 5,
+                        text: '"EO untuk acara anniversary perusahaan kami sangat memuaskan. Dari konsultasi konsep hingga eksekusi, semua berjalan sesuai rencana. Timnya komunikatif dan responsif."',
+                        name: 'Lisa Permata',
+                        role: 'HR Manager, Tech Solutions',
+                        date: 'Januari 2025 • Anniversary Perusahaan',
+                        featured: false
+                    }
+                ];
+                
+                // Add new testimonials to the grid
+                additionalTestimonials.forEach(testimonial => {
+                    const testimonialCard = document.createElement('div');
+                    testimonialCard.className = 'testimonial-card';
+                    if (testimonial.featured) testimonialCard.classList.add('featured');
+                    
+                    // Generate stars based on rating
+                    let stars = '';
+                    for (let i = 0; i < 5; i++) {
+                        stars += i < testimonial.rating ? '★' : '☆';
+                    }
+                    
+                    testimonialCard.innerHTML = `
+                        <div class="rating">
+                            <span class="stars">${stars}</span>
+                            <span class="rating-number">${testimonial.rating}.0</span>
+                        </div>
+                        <p class="testimonial-text">${testimonial.text}</p>
+                        <div class="client-info">
+                            <div class="client-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div>
+                                <h4>${testimonial.name}</h4>
+                                <span>${testimonial.role}</span>
+                                <small>${testimonial.date}</small>
+                            </div>
+                        </div>
+                    `;
+                    
+                    testimonialsGrid.appendChild(testimonialCard);
+                });
+                
+                // Re-initialize AOS for new elements
+                AOS.refresh();
+                
+                // Reset button state
+                spinner.classList.add('d-none');
+                btnText.textContent = 'Semua Testimoni Dimuat';
+                btn.disabled = true;
+                btn.style.opacity = '0.7';
+                
+            }, 1500);
+        });
+        
+        // Testimonial Form Submission
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.btn-submit');
+            const spinner = submitBtn.querySelector('.spinner-border');
+            const btnText = submitBtn.querySelector('.submit-text');
+            const formMessage = document.getElementById('formMessage');
+            
+            // Show loading state
+            spinner.classList.remove('d-none');
+            btnText.textContent = 'Mengirim...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission delay
+            setTimeout(function() {
+                // Hide loading state
+                spinner.classList.add('d-none');
+                btnText.textContent = 'Kirim Testimoni';
+                submitBtn.disabled = false;
+                
+                // Show success modal
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+                
+                // Reset form
+                document.getElementById('testimonialForm').reset();
+                
+            }, 2000);
+        });
+        
+        // Mobile menu improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
                     }
                 });
             });
+            
+            // Prevent zoom on iOS for input elements
+            document.addEventListener('touchstart', function() {}, {passive: true});
         });
         
-        // Reset stars when mouse leaves rating area
-        const starRating = document.querySelector('.star-rating');
-        if (starRating) {
-            starRating.addEventListener('mouseleave', function() {
-                const checkedStar = document.querySelector('input[name="rating"]:checked');
-                const labels = document.querySelectorAll('.star-rating label');
-                
-                if (checkedStar) {
-                    const checkedId = checkedStar.id;
-                    labels.forEach(label => {
-                        if (label.htmlFor === checkedId) {
-                            label.style.color = '#F6B01E';
-                        } else if (Array.from(labels).indexOf(label) < 
-                                   Array.from(labels).indexOf(document.querySelector('label[for="' + checkedId + '"]'))) {
-                            label.style.color = '#F6B01E';
-                        } else {
-                            label.style.color = '#E2E8F0';
-                        }
-                    });
+        // Form validation styling
+        const formInputs = document.querySelectorAll('#testimonialForm input, #testimonialForm textarea, #testimonialForm select');
+        formInputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() !== '') {
+                    this.classList.add('valid');
                 } else {
-                    labels.forEach(label => {
-                        label.style.color = '#E2E8F0';
-                    });
+                    this.classList.remove('valid');
                 }
             });
-        }
-    });
+        });
     </script>
 </body>
 </html>
+                       
